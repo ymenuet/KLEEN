@@ -9,7 +9,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    hashPwd: String,
+    password: String,
     image: String,
     googleID: String,
     facebookID: String

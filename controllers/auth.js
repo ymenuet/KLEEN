@@ -1,7 +1,9 @@
 const passport = require('passport');
 const User = require('../models/User');
-const bcrypt = require("bcryptjs");
-const bcryptSalt = 10;
+const {
+    genSaltSync,
+    hashSync
+} = require("bcryptjs");
 
 exports.loginView = (req, res) => {
     res.render("auth/login", {
@@ -20,26 +22,26 @@ exports.signupView = (req, res) => {
     res.render("auth/signup");
 }
 
-exports.singupProcess = async(req, res) => {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
-    if (username === "" || password === "" || email === "") {
-        res.render("auth/signup", {
-            message: "Indicate username, email and password"
-        });
-        return;
-    }
+exports.signupProcess = async(req, res) => {
+    const {
+        username,
+        email,
+        password
+    } = req.body;
+
+    if (username === "" || password === "" || email === "") return res.render("auth/signup", {
+        message: "Indicate username, email and password"
+    });
 
     const user = await User.findOne({
         email
     })
+
     if (user) return res.render("auth/signup", {
-        message: "The username already exists"
+        message: "The email already exists"
     });
 
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
+    const hashPass = hashSync(password, genSaltSync(12));
 
     await User.create({
         username,
@@ -47,7 +49,7 @@ exports.singupProcess = async(req, res) => {
         password: hashPass
     });
 
-    res.redirect('/')
+    res.redirect('/auth/login')
 };
 
 exports.logout = (req, res) => {
@@ -63,7 +65,7 @@ exports.googleLogin = passport.authenticate("google", {
 })
 
 exports.googleLoginCallback = passport.authenticate("google", {
-    successRedirect: "/profile",
+    successRedirect: "/",
     failureRedirect: "/auth/login",
     failureFlash: true,
 })
@@ -73,7 +75,7 @@ exports.facebookLogin = passport.authenticate('facebook', {
 })
 
 exports.facebookLoginCallback = passport.authenticate('facebook', {
-    successRedirect: '/profile',
+    successRedirect: '/',
     failureRedirect: '/auth/login',
     failureFlash: true
 })

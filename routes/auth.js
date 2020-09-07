@@ -4,13 +4,16 @@ const {
     loginView,
     loginProcess,
     signupView,
-    singupProcess,
+    signupProcess,
     logout,
     googleLogin,
     googleLoginCallback,
     facebookLogin,
     facebookLoginCallback
-} = require('../controllers/auth')
+} = require('../controllers/auth');
+const {
+    catchErrors
+} = require("../middlewares");
 
 // Local login
 router.get("/login", loginView);
@@ -18,7 +21,7 @@ router.post("/login", loginProcess);
 
 // Local signup
 router.get("/signup", signupView);
-router.post("/signup", singupProcess);
+router.post("/signup", catchErrors(signupProcess));
 
 // Logout
 router.get("/logout", logout);

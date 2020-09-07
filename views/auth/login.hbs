@@ -1,31 +1,35 @@
-<h2>Login</h2>
+<div class="main-text">
+  <h2>Login</h2>
 
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="JonSnow">
+  <form action="/auth/login" method="POST" id="form-container">
+    <br>
+    <label for="email">Email</label>
+    <br>
+    <input id="email" type="text" name="email" placeholder="JonSnow">
+    <br>
+    <br>
+    <label for="password">Password</label>
+    <br>
+    <input id="password" type="password" name="password" placeholder="Your password">
+    <br>
+    {{#if message }}
+    <div class="error-message">{{ message }}</div>s
+    {{/if}}
 
-  <br><br>
+    <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+    <button class="submitbtn">Login</button>
 
-  <br><br>
+    <div>
+      <a href="/auth/google"><i class="fab fa-google"></i>Login with Google</a>
+    </div>
+    <div>
+      <a href="/auth/facebook"><i class="fab fa-facebook"></i>Login with Facebook</a>
+    </div>
 
-  <button class="submitbtn">Login</button>
-
-  <div>
-    <i class="fab fa-google"></i><a href="/auth/google">Login with Google</a>
-  </div>
-  <div>
-    <i class="fab fa-facebook"></i><a href="/auth/facebook">Login with Facebook</a>
-  </div>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+    <p class="account-message">
+      Don't have an account yet?
+      <a href="/auth/signup">Signup</a>
+    </p>
+  </form>
+</div>
