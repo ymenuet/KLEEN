@@ -1,73 +1,35 @@
 const express = require("express");
-const passport = require('passport');
 const router = express.Router();
-const User = require("../models/User");
+const {
+    loginView,
+    loginProcess,
+    signupView,
+    singupProcess,
+    logout,
+    googleLogin,
+    googleLoginCallback,
+    facebookLogin,
+    facebookLoginCallback
+} = require('../controllers/auth')
 
-// Bcrypt to encrypt passwords
-const bcrypt = require("bcryptjs");
-const bcryptSalt = 10;
+// Local login
+router.get("/login", loginView);
+router.post("/login", loginProcess);
 
+// Local signup
+router.get("/signup", signupView);
+router.post("/signup", singupProcess);
 
-router.get("/login", (req, res, next) => {
-    res.render("auth/login", {
-        "message": req.flash("error")
-    });
-});
+// Logout
+router.get("/logout", logout);
 
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/auth/login",
-    failureFlash: true,
-    passReqToCallback: true
-}));
+// Google auth
+router.get("/google", googleLogin);
+router.get("/google/callback", googleLoginCallback);
 
-router.get("/signup", (req, res, next) => {
-    res.render("auth/signup");
-});
+// Facebook auth
+router.get('/facebook', facebookLogin);
+router.get('/facebook/callback', facebookLoginCallback)
 
-router.post("/signup", (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    if (username === "" || password === "") {
-        res.render("auth/signup", {
-            message: "Indicate username and password"
-        });
-        return;
-    }
-
-    User.findOne({
-        username
-    }, "username", (err, user) => {
-        if (user !== null) {
-            res.render("auth/signup", {
-                message: "The username already exists"
-            });
-            return;
-        }
-
-        const salt = bcrypt.genSaltSync(bcryptSalt);
-        const hashPass = bcrypt.hashSync(password, salt);
-
-        const newUser = new User({
-            username,
-            password: hashPass
-        });
-
-        newUser.save()
-            .then(() => {
-                res.redirect("/");
-            })
-            .catch(err => {
-                res.render("auth/signup", {
-                    message: "Something went wrong"
-                });
-            })
-    });
-});
-
-router.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-});
 
 module.exports = router;

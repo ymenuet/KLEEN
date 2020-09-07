@@ -1,8 +1,63 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+
+/*MAIN PAGE INDEX*/
+
+.main-text {
+    text-align: center;
+    margin: 40px;
+}
+
+.main-text h1 {
+    font-weight: 900;
+    font-size: 42px;
+}
+
+.main-text>p {
+    font-size: 28px;
+    margin: 50px 0;
+}
+
+.singup,
+.submitbtn {
+    background-color: #746AF6;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+.singup a {
+    color: white;
+}
+
+.login {
+    margin-top: 20px;
+}
+
+.login a {
+    color: #C0C0D3;
+}
+
+
+/*HASTA AQUI*/
+
+
+/*SIGN  UP*/
+
+.main-text input {
+    padding: 10px;
+    width: 100%;
+}
+
+.main-text label {
+    text-align: left;
+}
+
+.image-signup {
+    background-color: #C0C0D3;
 }
