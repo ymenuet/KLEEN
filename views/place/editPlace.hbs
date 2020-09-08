@@ -1,0 +1,67 @@
+<div class="main-text">
+  <h2>Edit "{{name}}"</h2>
+  <form action="/places/edit/{{_id}}" method="POST" enctype="multipart/form-data">
+    <label for="place-name" class="required-label">Name of the place (required):</label>
+    <input type="text" name="name" required id="place-name" value="{{name}}">
+
+    <label for="place-category" class="required-label">Category (required):</label>
+    <select name="category" id="place-category" required>
+      <option value="{{category}}" selected disabled>{{category}}</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Hotel">Hotel</option>
+      <option value="Store">Store</option>
+      <option value="Gym">Gym</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="other-category">If other category, please specify:</label>
+    <input type="text" id="other-category" name="otherCategory" value="{{otherCategory}}">
+
+    <label for="place-description">Description:</label>
+    <input type="text" name="description" id="place-description" value="{{description}}">
+
+    <label for="location" class="required-label">Location (required):</label>
+    <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
+    <input type="text" id="lat" name="lat" hidden required value="{{location.coordinates.[1]}}">
+    <input type="text" id="lng" name="lng" hidden required value="{{location.coordinates.[0]}}">
+    <p class="error-message error-location" style="display: none; margin-top: 15px;">*You must provide
+      the place with a location</p>
+
+    <label for="input-image-place">Upload new image for this place:</label>
+    <input type="file" name="image" id="input-image-place">
+
+    <button class="my-btn" type="submit">Update place</button>
+  </form>
+</div>
+
+<script>
+  window.onload = () => {
+    let marker = new mapboxgl.Marker()
+      .setLngLat([{{ location.coordinates }}])
+      .addTo(map);
+  map.flyTo({
+    center: [{{ location.coordinates }}]
+    })
+
+  const $lat = document.querySelector('#lat')
+  const $lng = document.querySelector('#lng')
+  const $errorMessage = document.querySelector('.error-location')
+  if (!$lat.value || !$lng.value)
+    $errorMessage.style.display = 'block';
+
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })
+  geocoder.on('result', event => {
+    const [lng, lat] = event.result.center
+    $lat.value = lat
+    $lng.value = lng
+    $errorMessage.style.display = 'none';
+  })
+  map.addControl(geocoder)
+
+  const $geocoderInput = document.querySelector('.mapboxgl-ctrl-geocoder--input')
+  $geocoderInput.placeholder = "Type new place or address"
+}
+</script>

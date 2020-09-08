@@ -1,0 +1,37 @@
+<div class="main-text">
+  <h2>Add a new place</h2>
+  <form action="/places/new" method="POST" enctype="multipart/form-data">
+    <label for="place-name" class="required-label">Name of the place (required):</label>
+    <input type="text" name="name" required id="place-name">
+
+    <label for="place-category" class="required-label">Category (required):</label>
+    <select name="category" id="place-category" required>
+      <option value="" disabled selected>Select a category:</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Hotel">Hotel</option>
+      <option value="Store">Store</option>
+      <option value="Gym">Gym</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="other-category">If other category, please specify:</label>
+    <input type="text" id="other-category" name="otherCategory">
+
+    <label for="place-description">Description:</label>
+    <input type="text" name="description" id="place-description">
+
+    <label for="location" class="required-label">Location (required):</label>
+    <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
+    <input type="text" id="lat" name="lat" hidden required>
+    <input type="text" id="lng" name="lng" hidden required>
+    <p class="error-message error-location" style="display: none; margin-top: 15px;">*You must provide
+      the place with a location</p>
+
+    <label for="input-image-place">Upload an image for this place:</label>
+    <input type="file" name="image" id="input-image-place">
+
+    <button class="my-btn" type="submit">Create new place</button>
+  </form>
+</div>
+
+<script src="/javascripts/newPlace.js"></script>

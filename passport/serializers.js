@@ -8,6 +8,7 @@ passport.serializeUser((loggedInUser, cb) => {
 passport.deserializeUser(async(userIdFromSession, cb) => {
     try {
         const user = await User.findById(userIdFromSession)
+        delete user.password
         cb(null, user);
     } catch (err) {
         cb(err);

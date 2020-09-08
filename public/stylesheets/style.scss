@@ -20,6 +20,10 @@ form {
     width: 100%;
 }
 
+.container {
+    padding-bottom: 50px;
+}
+
 
 /* BUTTONS */
 
@@ -76,7 +80,7 @@ form {
 
 @media (min-width:992px) {
     .form-inline {
-        justify-content: flex-end!important;
+        justify-content: flex-end !important;
     }
 }
 
@@ -88,7 +92,7 @@ form {
         justify-content: space-evenly;
     }
     .navbar-btn {
-        width: 100%!important;
+        width: 100% !important;
     }
 }
 
@@ -104,14 +108,17 @@ form {
 }
 
 .main-text h1 {
-    font-weight: bold;
     font-size: 4rem;
-    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.main-text h2 {
+    font-size: 2.6rem;
     color: #333;
 }
 
 .main-text h3 {
-    font-size: 30px;
+    font-size: 2.1rem;
     margin: 100px 0;
     font-weight: 400;
     color: #333;
@@ -210,4 +217,19 @@ form {
 .edit-post,
 .delete-post {
     background-color: #746AF6;
+}
+
+
+/* NEW PLACE */
+
+.required-label {
+    font-weight: bold;
+}
+
+
+/* MAPBOX */
+
+.mapboxgl-ctrl-geocoder--input {
+    padding-left: 20px !important;
+    background-color: white !important;
 }

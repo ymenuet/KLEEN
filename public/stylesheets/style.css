@@ -15,6 +15,9 @@ body {
 form {
   width: 100%; }
 
+.container {
+  padding-bottom: 50px; }
+
 /* BUTTONS */
 .my-btn,
 .my-btn:hover {
@@ -80,13 +83,15 @@ form {
   text-align: center; }
 
 .main-text h1 {
-  font-weight: bold;
   font-size: 4rem;
-  font-family: 'Roboto', sans-serif;
+  color: #333; }
+
+.main-text h2 {
+  font-size: 2.6rem;
   color: #333; }
 
 .main-text h3 {
-  font-size: 30px;
+  font-size: 2.1rem;
   margin: 100px 0;
   font-weight: 400;
   color: #333; }
@@ -166,5 +171,14 @@ form {
 .edit-post,
 .delete-post {
   background-color: #746AF6; }
+
+/* NEW PLACE */
+.required-label {
+  font-weight: bold; }
+
+/* MAPBOX */
+.mapboxgl-ctrl-geocoder--input {
+  padding-left: 20px !important;
+  background-color: white !important; }
 
 /*# sourceMappingURL=style.css.map */

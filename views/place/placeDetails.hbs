@@ -1,0 +1,17 @@
+<div class="main-text">
+  <h1>{{name}}</h1>
+  <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
+  <a href="/places/edit/{{_id}}">Edit place</a>
+  <a href="/places/delete/{{_id}}">Delete place</a>
+</div>
+
+<script>
+  window.onload = () => {
+    let marker = new mapboxgl.Marker()
+      .setLngLat([{{ location.coordinates }}])
+      .addTo(map);
+  map.flyTo({
+    center: [{{ location.coordinates }}]
+    })
+  }
+</script>
