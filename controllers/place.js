@@ -41,7 +41,14 @@ exports.getPlaces = async(req, res) => {
 }
 
 exports.viewPlace = async(req, res) => {
-    const place = await Place.findById(req.params.placeId);
+    const place = await Place.findById(req.params.placeId).populate({
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+            path: 'author',
+            model: 'User'
+        }
+    });
     res.render('place/placeDetails', place)
 }
 
