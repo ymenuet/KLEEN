@@ -125,4 +125,8 @@ form {
   height: 300px;
   border-radius: 50%; }
 
+.edit-post,
+.delete-post {
+  background-color: #746AF6; }
+
 /*# sourceMappingURL=style.css.map */
