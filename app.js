@@ -94,4 +94,7 @@ app.use('/auth', authRoutes);
 const placeRoutes = require('./routes/place');
 app.use('/places', placeRoutes);
 
+const commentRoutes = require('./routes/comment');
+app.use('/comment', commentRoutes);
+
 module.exports = app;
