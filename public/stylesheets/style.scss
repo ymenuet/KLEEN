@@ -20,6 +20,10 @@ form {
     width: 100%;
 }
 
+.container {
+    padding-bottom: 50px;
+}
+
 
 /* BUTTONS */
 
@@ -76,7 +80,7 @@ form {
 
 @media (min-width:992px) {
     .form-inline {
-        justify-content: flex-end!important;
+        justify-content: flex-end !important;
     }
 }
 
@@ -88,7 +92,7 @@ form {
         justify-content: space-evenly;
     }
     .navbar-btn {
-        width: 100%!important;
+        width: 100% !important;
     }
 }
 

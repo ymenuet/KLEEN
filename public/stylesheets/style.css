@@ -15,6 +15,9 @@ body {
 form {
   width: 100%; }
 
+.container {
+  padding-bottom: 50px; }
+
 /* BUTTONS */
 .my-btn,
 .my-btn:hover {
