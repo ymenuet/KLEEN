@@ -8,6 +8,10 @@ const placeSchema = new Schema({
         type: String,
         required: true
     },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     category: {
         type: String,
         enum: ["Restaurante", "Hotel", "Store", "Gym", "Other"]
