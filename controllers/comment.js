@@ -40,25 +40,45 @@ exports.createCommentProcess = async(req, res) => {
         avgScore
     })
 
-    const place = await Place.findById(req.params.placeId)
+    const truncNum = num => parseFloat(num.toFixed(1))
 
     const calculateNewAvg = (object, add) => {
         return {
-            avg: (parseInt(object.avg) * parseInt(object.numberOfScores) + parseInt(add)) / (parseInt(object.numberOfScores) + 1),
-            numberOfScores: parseInt(object.numberOfScores) + 1
+            avg: truncNum((object.avg * object.numberOfScores * 100 + add * 100) / (object.numberOfScores * 100 + 100)),
+            numberOfScores: object.numberOfScores + 1
         }
     }
 
-    console.log('ICI:', place.avgMasks)
+    const place = await Place.findById(req.params.placeId)
+    const newAvgs = [
+        calculateNewAvg(place.avgMasks, scoreMasks).avg,
+        calculateNewAvg(place.avgGel, scoreGel).avg,
+        calculateNewAvg(place.avgClean, scoreClean).avg,
+        calculateNewAvg(place.avgService, scoreService).avg,
+    ];
+    const averageScore = truncNum((newAvgs[0] + newAvgs[1] + newAvgs[2] + newAvgs[3]) / 4)
 
     await Place.findByIdAndUpdate(req.params.placeId, {
         $push: {
             comments: newComment._id
         },
         avgMasks: {
-            avg: calculateNewAvg(place.avgMasks, scoreMasks).avg,
+            avg: newAvgs[0],
             numberOfScores: calculateNewAvg(place.avgMasks, scoreMasks).numberOfScores
-        }
+        },
+        avgGel: {
+            avg: newAvgs[1],
+            numberOfScores: calculateNewAvg(place.avgGel, scoreGel).numberOfScores
+        },
+        avgClean: {
+            avg: newAvgs[2],
+            numberOfScores: calculateNewAvg(place.avgClean, scoreClean).numberOfScores
+        },
+        avgService: {
+            avg: newAvgs[3],
+            numberOfScores: calculateNewAvg(place.avgService, scoreService).numberOfScores
+        },
+        averageScore
     })
 
     res.redirect(`/places/${req.params.placeId}`)
