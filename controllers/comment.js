@@ -44,18 +44,20 @@ exports.createCommentProcess = async(req, res) => {
 
     const calculateNewAvg = (object, add) => {
         return {
-            avg: object.avg * object.numberOfScores + add,
-            numberOfScores: object.numberOfScores + 1
+            avg: (parseInt(object.avg) * parseInt(object.numberOfScores) + parseInt(add)) / (parseInt(object.numberOfScores) + 1),
+            numberOfScores: parseInt(object.numberOfScores) + 1
         }
     }
+
+    console.log('ICI:', place.avgMasks)
 
     await Place.findByIdAndUpdate(req.params.placeId, {
         $push: {
             comments: newComment._id
         },
         avgMasks: {
-            avg: calculateNewAvg(place.avgMasks, parseInt(scoreMasks)).avg,
-            numberOfScores: calculateNewAvg(place.avgMasks, parseInt(scoreMasks)).numberOfScores
+            avg: calculateNewAvg(place.avgMasks, scoreMasks).avg,
+            numberOfScores: calculateNewAvg(place.avgMasks, scoreMasks).numberOfScores
         }
     })
 

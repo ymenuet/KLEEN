@@ -38,33 +38,49 @@ const placeSchema = new Schema({
         avg: {
             type: Number,
             min: 0,
-            max: 5
+            max: 5,
+            default: 0
         },
-        numberOfScores: Number
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgGel: {
         avg: {
             type: Number,
             min: 0,
-            max: 5
+            max: 5,
+            default: 0
         },
-        numberOfScores: Number
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgClean: {
         avg: {
             type: Number,
             min: 0,
-            max: 5
+            max: 5,
+            default: 0
         },
-        numberOfScores: Number
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgService: {
         avg: {
             type: Number,
             min: 0,
-            max: 5
+            max: 5,
+            default: 0
         },
-        numberOfScores: Number
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
 }, {
     timestamps: true
