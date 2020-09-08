@@ -14,8 +14,9 @@ const placeSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Restaurante", "Hotel", "Store", "Gym", "Other"]
+        enum: ["Restaurant", "Hotel", "Store", "Gym", "Other"]
     },
+    description: String,
     otherCategory: String,
     image: String,
     location: {
@@ -34,27 +35,59 @@ const placeSchema = new Schema({
         max: 5
     },
     avgMasks: {
-        type: Number,
-        min: 0,
-        max: 5
+        avg: {
+            type: Number,
+            min: 0,
+            max: 5,
+            default: 0
+        },
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgGel: {
-        type: Number,
-        min: 0,
-        max: 5
+        avg: {
+            type: Number,
+            min: 0,
+            max: 5,
+            default: 0
+        },
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgClean: {
-        type: Number,
-        min: 0,
-        max: 5
+        avg: {
+            type: Number,
+            min: 0,
+            max: 5,
+            default: 0
+        },
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
     avgService: {
-        type: Number,
-        min: 0,
-        max: 5
+        avg: {
+            type: Number,
+            min: 0,
+            max: 5,
+            default: 0
+        },
+        numberOfScores: {
+            type: Number,
+            default: 0
+        }
     },
 }, {
     timestamps: true
+})
+
+placeSchema.index({
+    location: '2dsphere'
 })
 
 module.exports = model("Place", placeSchema)

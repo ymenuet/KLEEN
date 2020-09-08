@@ -14,6 +14,11 @@ const commentSchema = new Schema({
     },
     image: String,
     content: String,
+    avgScore: {
+        type: Number,
+        min: 0,
+        max: 5
+    },
     scoreMasks: {
         type: Number,
         min: 0,

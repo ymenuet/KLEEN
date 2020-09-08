@@ -25,10 +25,10 @@ router.get('/', ensureLogin, catchErrors(getPlaces))
 router.get('/:placeId', ensureLogin, catchErrors(viewPlace))
 
 // Edit places
-router.get('/edit/:placeId', ensureLogin, catchErrors(checkAuthorPlace), catchErrors(editPlaceView))
-router.post('/edit/:placeId', ensureLogin, catchErrors(checkAuthorPlace), upload.single('image'), catchErrors(editPlaceProcess))
+router.get('/edit/:placeId', ensureLogin, checkAuthorPlace, catchErrors(editPlaceView))
+router.post('/edit/:placeId', ensureLogin, checkAuthorPlace, upload.single('image'), catchErrors(editPlaceProcess))
 
 // Delete places
-router.get('/delete/:placeId', ensureLogin, catchErrors(checkAuthorPlace), catchErrors(deletePlace))
+router.get('/delete/:placeId', ensureLogin, checkAuthorPlace, catchErrors(deletePlace))
 
 module.exports = router

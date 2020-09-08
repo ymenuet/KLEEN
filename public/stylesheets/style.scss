@@ -1,5 +1,6 @@
 * {
     font-family: 'Roboto', sans-serif;
+    color:#333;
 }
 
 html,
@@ -27,8 +28,7 @@ form {
 
 /* BUTTONS */
 
-.my-btn,
-.my-btn:hover {
+.my-btn{
     border: none;
     border-radius: 30px;
     padding: 10px 15px;
@@ -36,13 +36,18 @@ form {
     max-width: 500px;
     margin: 20px auto;
     text-decoration: none;
+    transition: 0.2s all;
+}
+
+.my-btn:hover{
+    transform:scale(1.1);
 }
 
 .signup,
 .submitbtn,
 .signup:hover,
 .submitbtn:hover {
-    background-color: #746AF6;
+    background: -webkit-linear-gradient(left, #746AF6, #D1A0F8);
     color: white;
 }
 
@@ -50,7 +55,7 @@ form {
 .login:hover {
     color: #746AF6;
     font-weight: 600;
-    background-color: #C0C0D3;
+    background: -webkit-linear-gradient(left, #BEBAE5, #F8F3FC);
     margin: 0px 15%;
 }
 
@@ -108,14 +113,17 @@ form {
 }
 
 .main-text h1 {
-    font-weight: bold;
     font-size: 4rem;
-    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.main-text h2 {
+    font-size: 2.6rem;
     color: #333;
 }
 
 .main-text h3 {
-    font-size: 30px;
+    font-size: 2.1rem;
     margin: 100px 0;
     font-weight: 400;
     color: #333;
@@ -214,4 +222,43 @@ form {
 .edit-post,
 .delete-post {
     background-color: #746AF6;
+}
+
+
+/* NEW PLACE */
+
+.required-label {
+    font-weight: bold;
+}
+
+
+/* MAPBOX */
+
+.mapboxgl-ctrl-geocoder--input {
+    padding-left: 20px !important;
+    background-color: white !important;
+}
+
+/* PLACES */
+.card{
+    margin:10px;
+}
+
+.card-title{
+    color: #746AF6;
+}
+
+.card-image{
+    width: 100%;
+    overflow: hidden;
+    transition: 1s all
+}
+
+.card-image img:hover{
+    transform:scale(1.5);
+    transition:1s all;
+}
+
+.detail{
+    display: block;
 }

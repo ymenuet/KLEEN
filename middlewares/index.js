@@ -1,4 +1,5 @@
-const Place = require('../models/Place')
+const Place = require('../models/Place');
+const Comment = require('../models/Comment')
 
 exports.ensureLogin = (req, res, next) => {
     if (req.user) next();
@@ -14,13 +15,13 @@ exports.sendUser = app => (req, res, next) => {
 }
 
 exports.checkAuthorPlace = async(req, res, next) => {
-    const place = await Place.findById(req.params.placeId).populate('creator')
-    if (place.creator._id === req.user._id) next()
-    else redirect('/')
+    const place = await Place.findById(req.params.placeId)
+    if (`${place.creator}` === `${req.user._id}`) return next()
+    else res.redirect('/')
 }
 
 exports.checkAuthorComment = async(req, res, next) => {
-    const place = await Place.findById(req.params.commentId).populate('author')
-    if (place.author._id === req.user._id) next()
-    else redirect('/')
+    const comment = await Comment.findById(req.params.commentId)
+    if (`${comment.author}` === `${req.user._id}`) return next()
+    else res.redirect('/')
 }

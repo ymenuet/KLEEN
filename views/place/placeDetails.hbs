@@ -1,0 +1,77 @@
+<div class="main-text">
+  <h1>{{name}}</h1>
+  <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
+  <a href="/places/edit/{{_id}}">Edit place</a>
+  <a href="/places/delete/{{_id}}">Delete place</a>
+</div>
+
+<div class="add-comment">
+  <h4>Post your comment</h4>
+
+  <form action="/comment/newComment/{{_id}}" method="POST" id="form-container" enctype="multipart/form-data">
+
+    <label for="image">Image:</label>
+    <div class="custom-file">
+      <label class="profile-image custom-file-label" for="image">
+        Image of the place
+      </label>
+      <input type="file" name="image" class="custom-file-input">
+    </div>
+
+    <label for="content">Description:</label>
+    <input type="text" name="content">
+    <br>
+
+    <label for="scoreMasks">Masks:</label>
+    <input type="number" min="0" max="5" name="scoreMasks" placeholder="0">
+    <br>
+
+    <label for="scoreGel">Gel:</label>
+    <input type="number" min="0" max="5" name="scoreGel" placeholder="0">
+    <br>
+
+    <label for="scoreClean">Clean:</label>
+    <input type="number" min="0" max="5" name="scoreClean" placeholder="0">
+    <br>
+
+    <label for="scoreService">Service:</label>
+    <input type="number" min="0" max="5" name="scoreService" placeholder="0">
+
+    <button type="submit" class="submitbtn my-btn">Create</button>
+  </form>
+</div>
+
+<div class='comments-list'>
+  {{#each comments}}
+  <h5>Commented by {{author.username}}</h5>
+  <ul>
+    {{#if scoreMasks}}
+    <li>Facemasks use: {{scoreMasks}}/5</li>
+    {{/if}}
+    {{#if scoreGel}}
+    <li>Antibacterial gel available: {{scoreGel}}/5</li>
+    {{/if}}
+    {{#if scoreClean}}
+    <li>Cleanliness of the place: {{scoreClean}}/5</li>
+    {{/if}}
+    {{#if scoreService}}
+    <li>Quality of service in general: {{scoreService}}/5</li>
+    {{/if}}
+  </ul>
+  {{#if image}}
+  <img src="{{image}}" alt="Image">
+  {{/if}}
+  <p>{{content}}</p>
+  {{/each}}
+</div>
+
+<script>
+  window.onload = () => {
+    let marker = new mapboxgl.Marker()
+      .setLngLat([{{ location.coordinates }}])
+      .addTo(map);
+  map.flyTo({
+    center: [{{ location.coordinates }}]
+    })
+  }
+</script>
