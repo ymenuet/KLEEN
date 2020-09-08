@@ -1,8 +1,10 @@
 <div class="main-text">
   <div class="row">
     {{#each places}}
-    <div class="card col-12 col-sm-6 col-lg-4">
-      <img src="{{image}}" alt="{{name}}" class="card-img-top">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{image}}" alt="{{name}}" class="card-img-top">
+      </div>
       <div class="card-body">
         <h5 class="card-title">{{name}}</h5>
         {{#unless otherCategory}}
@@ -11,7 +13,7 @@
         <h6 class="card-title">{{otherCategory}}</h6>
         {{/unless}}
         <p class="card-text">{{description}}</p>
-        <a href="/places/{{_id}}" class="my-btn">See details</a>
+        <a href="/places/{{_id}}" class="my-btn submitbtn detail">See details</a>
       </div>
     </div>
     {{/each}}
