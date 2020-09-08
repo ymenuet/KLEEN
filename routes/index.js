@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     res.render('index');
 });
 
-//profile
+/* Profile page */
 router.get("/profile", (req, res) => {
     const user = req.user
     res.render("profile", user)

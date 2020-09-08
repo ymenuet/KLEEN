@@ -2,12 +2,14 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html,
 body {
-    font: 14px;
+    padding: 0;
+    margin: 0;
 }
 
-a {
-    color: #00B7FF;
+body {
+    font: 14px;
 }
 
 .error-message {
@@ -19,71 +21,120 @@ form {
 }
 
 
-/*nav bar*/
+/* BUTTONS */
+
+.my-btn,
+.my-btn:hover {
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    width: 70%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+.signup,
+.submitbtn,
+.signup:hover,
+.submitbtn:hover {
+    background-color: #746AF6;
+    color: white;
+}
+
+.login,
+.login:hover {
+    color: #746AF6;
+    font-weight: 600;
+    background-color: #C0C0D3;
+    margin: 0px 15%;
+}
+
+
+/* NAVBAR */
 
 .navbar-brand {
     font-weight: bold;
 }
 
+.navbar {
+    padding: 10px 20px;
+}
 
-/*MAIN PAGE INDEX*/
+.navbar-btn,
+.navbar-btn:hover {
+    max-width: 200px;
+    margin: 0;
+}
+
+.navbar-input {
+    border-radius: 30px;
+    padding: 10px 15px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+@media (min-width:992px) {
+    .form-inline {
+        justify-content: flex-end!important;
+    }
+}
+
+@media (max-width:576px) {
+    .form-inline {
+        flex-direction: column;
+        align-items: flex-end;
+        height: 120px;
+        justify-content: space-evenly;
+    }
+    .navbar-btn {
+        width: 100%!important;
+    }
+}
+
+
+/* MAIN PAGE INDEX */
 
 .main-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px;
     text-align: center;
-    margin: 40px 10px;
 }
 
 .main-text h1 {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 4rem;
     font-family: 'Roboto', sans-serif;
+    color: #333;
 }
 
 .main-text h3 {
     font-size: 30px;
-    margin: 100px 2% 120px;
-    width: 96%;
+    margin: 100px 0;
     font-weight: 400;
     color: #333;
 }
 
-.signup,
-.submitbtn {
-    border: none;
-    background-color: #746AF6;
-    padding: 10px 15px;
-    border-radius: 30px;
-    width: 70%;
-    display: block;
-    margin: 20px 15%;
-    color: white;
-    text-decoration: none;
+.homepage-form {
+    position: relative;
 }
 
-.login {
-    color: #746AF6;
-    background-color: #C0C0D3;
-    padding: 10px 15px;
-    border-radius: 30px;
-    width: 70%;
-    display: block;
-    margin: 0px 15%;
+.homepage-form>input {
+    padding-left: 40px !important;
+    width: 70% !important;
 }
 
-.signup,
-.login,
-.signup:hover,
-.login:hover {
-    width: 80%;
-    max-width: 500px;
-    text-decoration: none;
+.fa-search {
+    position: absolute;
+    color: #96989A;
+    top: 35px;
+    padding-left: 15px;
 }
 
 
-/*SIGN  UP*/
+/* SIGN  UP & LOGIN FORMS */
 
 .main-text input {
     padding: 10px;
@@ -107,9 +158,6 @@ form {
     margin: 0 auto !important;
     width: 90%;
     border-radius: 30px;
-}
-
-.custom-file-label {
     padding-left: 10px !important;
 }
 
@@ -118,13 +166,20 @@ form {
     border-bottom-right-radius: 30px !important;
 }
 
+.custom-file-input,
+#file-upload-button {
+    cursor: pointer !important;
+}
+
+#file-upload-button {
+    display: none !important;
+    z-index: -1;
+}
+
 #form-container {
     width: 80%;
     max-width: 500px;
 }
-
-
-/*login*/
 
 .iconos {
     margin-bottom: 10px;
@@ -142,15 +197,9 @@ form {
     margin-left: 5px;
 }
 
-//main
-.fa-search {
-    position: absolute;
-    top: 530px;
-    left: 310px;
-    z-index: 6;
-}
 
-//perfi
+/* PROFILE */
+
 .user-info img {
     margin-top: 20px;
     width: 300px;

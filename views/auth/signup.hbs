@@ -1,7 +1,8 @@
-<div class="main-text">
-  <h1>{{title}}</h1>
+<div class="main-text container">
+  <h2>Create an account</h2>
 
   <form action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
+    <br>
     <label for="username">Username:</label>
     <input id="username" type="text" name="username" placeholder="Your username">
     <br>
@@ -29,7 +30,7 @@
     {{#if message }}
     <div class="error-message">{{ message }}</div>
     {{/if}}
-    <button class="submitbtn" type="submit">Create account</button>
+    <button class="submitbtn my-btn" type="submit">Create account</button>
   </form>
   <div class="iconos">
     <h5>Sign up with:</h5>

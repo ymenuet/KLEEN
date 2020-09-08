@@ -1,18 +1,18 @@
-<div class="main-text">
+<div class="main-text container">
   <h1>{{title}}</h1>
-  <h3>Busca la información necesaria
-    de los lugares más protegidos en tu ciudad</h3>
+  <h3>Te ayudamos a salir de tu casa sin preocuparte por tu salud!</h3>
 
   {{#if user}}
-  <form action="/main" method="POST">
-    <label for="search"></label>
-    <input type="text" name="search" placeholder="Look up for a place!"><i class="fas fa-search"></i>
-    <button class="submitbtn" type="submit">Search!</button>
+  <form action="/" method="GET" class="homepage-form">
+    <i class="fas fa-search"></i>
+    <input type="text" name="search" placeholder='Type the name of a place' class="my-btn">
+    <br>
+    <button class="submitbtn my-btn" type="submit">Search</button>
   </form>
   {{else}}
-  <a href="/auth/signup" class="signup">Signup</a>
+  <a href="/auth/signup" class="signup my-btn">Signup</a>
   <br>
-  <a href="/auth/login" class="login">Login</a>
+  <a href="/auth/login" class="login my-btn">Login</a>
   {{/if}}
 
 </div>
