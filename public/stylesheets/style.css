@@ -79,7 +79,8 @@ form {
     width: 100% !important; } }
 
 /* MAIN PAGE INDEX */
-.main-text {
+.main-text,
+.add-comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,6 +113,10 @@ form {
   color: #96989A;
   top: 35px;
   padding-left: 15px; }
+
+@media (min-width: 768px) {
+  .main-text h3 {
+    width: 60%; } }
 
 /* SIGN  UP & LOGIN FORMS */
 .main-text input {
@@ -187,21 +192,55 @@ form {
 
 /* PLACES */
 .card {
-  margin: 10px; }
+  overflow: hidden;
+  transition: 1.5s all; }
+
+.card:hover {
+  transform: scale(1.1); }
 
 .card-title {
   color: #746AF6; }
 
 .card-image {
   width: 100%;
-  overflow: hidden;
-  transition: 1s all; }
+  overflow: hidden; }
 
 .card-image img:hover {
   transform: scale(1.5);
-  transition: 1s all; }
+  transition: 2s all; }
 
 .detail {
   display: block; }
+
+/* PLACE DETAIL */
+.comments {
+  border: 1px solid #eee;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 1.5s all; }
+
+.comments:hover {
+  transform: scale(1.1);
+  background: -webkit-linear-gradient(top, #F6F8F9, #F8EFFD); }
+
+.comments ul {
+  text-align: left; }
+
+@media (min-width: 768px) {
+  .about-comment {
+    display: flex;
+    width: 1500px;
+    justify-content: space-between;
+    margin-top: 80px; }
+  .add-comment {
+    width: 50%; }
+  .comments-list {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap; }
+  .comments {
+    margin: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
