@@ -14,11 +14,14 @@ const placeSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Restaurant", "Hotel", "Store", "Gym", "Other"]
+        enum: ["Bar", "Cinema", "Gym", "Hotel", "Nightclub", "Restaurant", "Store", "Theater", "Other"]
     },
     description: String,
     otherCategory: String,
-    image: String,
+    image: {
+        type: String,
+        default: 'https://sisterhoodofstyle.com/wp-content/uploads/2018/02/no-image-1.jpg'
+    },
     location: {
         type: {
             type: String

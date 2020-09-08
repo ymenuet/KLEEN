@@ -52,8 +52,8 @@
         {{/if}}
       </ul>
       {{#if user}}
-      <form class="form-inline" action="/places" method="GET">
-        <input class="form-control mr-sm-2 navbar-input" type="search" name="search" placeholder="Look up for a place"
+      <form class="form-inline" action="/places/quick-search" method="GET">
+        <input class="form-control mr-sm-2 navbar-input" type="search" name="name" placeholder="Look up for a place"
           aria-label="Search">
         <button class="my-btn submitbtn navbar-btn" type="submit">Search</button>
       </form>
