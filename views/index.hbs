@@ -3,7 +3,16 @@
   <h3>Busca la información necesaria
     de los lugares más protegidos en tu ciudad</h3>
 
+  {{#if user}}
+  <form action="/main" method="POST">
+    <label for="search"></label>
+    <input type="text" name="search" placeholder="Look up for a place!"><i class="fas fa-search"></i>
+    <button class="submitbtn" type="submit">Search!</button>
+  </form>
+  {{else}}
+  <a href="/auth/signup" class="signup">Signup</a>
+  <br>
+  <a href="/auth/login" class="login">Login</a>
+  {{/if}}
 
-  <p class="singup"><a href="/auth/signup">Signup</a></p>
-  <p class="login"><a href="/auth/login">Login</a></p>
 </div>

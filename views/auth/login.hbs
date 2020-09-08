@@ -4,32 +4,29 @@
   <form action="/auth/login" method="POST" id="form-container">
     <br>
     <label for="email">Email</label>
-    <br>
     <input id="email" type="text" name="email" placeholder="JonSnow">
     <br>
     <br>
     <label for="password">Password</label>
-    <br>
     <input id="password" type="password" name="password" placeholder="Your password">
     <br>
+    <br>
     {{#if message }}
-    <div class="error-message">{{ message }}</div>s
+    <div class="error-message">{{ message }}</div>
     {{/if}}
 
     <br><br>
 
     <button class="submitbtn">Login</button>
-
-    <div>
-      <a href="/auth/google"><i class="fab fa-google"></i>Login with Google</a>
-    </div>
-    <div>
-      <a href="/auth/facebook"><i class="fab fa-facebook"></i>Login with Facebook</a>
-    </div>
-
-    <p class="account-message">
-      Don't have an account yet?
-      <a href="/auth/signup">Signup</a>
-    </p>
   </form>
+
+  <div class="iconos">
+    <a href="/auth/google"><i class="fab fa-google fa-2x"></i></a>
+    <a href="/auth/facebook"><i class="fab fa-facebook fa-2x"></i></a>
+  </div>
+
+  <p class="account-message">
+    Don't have an account yet?
+    <a href="/auth/signup">Signup</a>
+  </p>
 </div>

@@ -7,11 +7,21 @@ body {
 a {
   color: #00B7FF; }
 
-button {
-  border: none; }
+.error-message {
+  color: red; }
+
+form {
+  width: 100%; }
+
+/*nav bar*/
+.navbar-brand {
+  font-weight: bold; }
 
 /*MAIN PAGE INDEX*/
 .main-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   margin: 40px 10px; }
 
@@ -21,50 +31,98 @@ button {
   font-family: 'Roboto', sans-serif; }
 
 .main-text h3 {
-  font-size: 32px;
-  margin: 100px 0 120px 0;
-  width: 100%;
-  font-weight: 500; }
+  font-size: 30px;
+  margin: 100px 2% 120px;
+  width: 96%;
+  font-weight: 400;
+  color: #333; }
 
-.singup,
+.signup,
 .submitbtn {
+  border: none;
   background-color: #746AF6;
   padding: 10px 15px;
   border-radius: 30px;
   width: 70%;
-  margin: 20px auto; }
-
-.singup a {
-  color: white; }
+  display: block;
+  margin: 20px 15%;
+  color: white;
+  text-decoration: none; }
 
 .login {
-  margin: 20px auto;
-  width: 70%; }
+  color: #746AF6;
+  background-color: #C0C0D3;
+  padding: 10px 15px;
+  border-radius: 30px;
+  width: 70%;
+  display: block;
+  margin: 0px 15%; }
 
-.login a {
-  color: #C0C0D3; }
+.signup,
+.login,
+.signup:hover,
+.login:hover {
+  width: 80%;
+  max-width: 500px;
+  text-decoration: none; }
 
-/*HASTA AQUI*/
 /*SIGN  UP*/
 .main-text input {
   padding: 10px;
   width: 90%;
   border-radius: 30px;
   border: none;
-  background-color: #eee; }
+  background-color: #F6F8F9; }
 
 .main-text label {
   display: block;
   text-align: left;
-  margin: 10px 0 0 20px; }
+  margin: 10px auto;
+  padding-left: 5px;
+  width: 90%;
+  color: #96989A;
+  box-sizing: border-box; }
 
-.image-signup {
-  background-color: #C0C0D3; }
+.custom-file-label {
+  margin: 0 auto !important;
+  width: 90%;
+  border-radius: 30px; }
 
-.submitbtn {
-  background-color: #746AF6;
-  color: white;
-  width: 70%;
-  margin: 20px 15%; }
+.custom-file-label {
+  padding-left: 10px !important; }
+
+.custom-file-label::after {
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important; }
+
+#form-container {
+  width: 80%;
+  max-width: 500px; }
+
+/*login*/
+.iconos {
+  margin-bottom: 10px; }
+
+.fa-google {
+  display: inline-block;
+  color: tomato;
+  margin-right: 5px; }
+
+.fa-facebook {
+  display: inline-block;
+  color: #3B5998;
+  margin-left: 5px; }
+
+.fa-search {
+  position: absolute;
+  top: 530px;
+  left: 310px;
+  z-index: 6; }
+
+.user-info img {
+  margin-top: 20px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%; }
 
 /*# sourceMappingURL=style.css.map */

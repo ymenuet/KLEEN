@@ -33,6 +33,11 @@ exports.signupProcess = async(req, res) => {
         message: "Indicate username, email and password"
     });
 
+    let image;
+    if (req.file) image = req.file.path
+
+    console.log('REQ.FILE: ', req.file)
+
     const user = await User.findOne({
         email
     })
@@ -46,6 +51,7 @@ exports.signupProcess = async(req, res) => {
     await User.create({
         username,
         email,
+        image,
         password: hashPass
     });
 

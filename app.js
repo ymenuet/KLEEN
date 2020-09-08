@@ -13,6 +13,9 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
 
+const {
+    sendUser
+} = require('./middlewares')
 
 mongoose
     .connect(process.env.DB, {
@@ -79,6 +82,7 @@ app.use(session({
 }))
 app.use(flash());
 require('./passport')(app);
+app.use(sendUser(app))
 
 
 const index = require('./routes/index');

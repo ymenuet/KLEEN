@@ -11,14 +11,20 @@ passport.use(new FacebookStrategy({
     const user = await User.findOne({
         facebookID: profile.id
     })
-    if (!user) {
+    const userWithEmail = await User.findOne({
+        email: profile.emails[0].value
+    })
+    if (!user && userWithEmail) return done(null, false, {
+        message: "Try logging in with Google or a local account"
+    })
+    if (!user && !userWithEmail) {
         const user = await User.create({
             facebookID: profile.id,
             email: profile.emails[0].value,
             image: profile.photos[0].value,
             username: profile.name.givenName
         })
-        done(null, user)
+        return done(null, user)
     }
     done(null, user)
 }))

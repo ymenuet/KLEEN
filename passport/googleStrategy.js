@@ -7,18 +7,23 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: "/auth/google/callback"
 }, async(accessToken, refreshToken, profile, done) => {
-    console.log('PROFILE: ', profile)
     const user = await User.findOne({
         googleID: profile.id
     })
-    if (!user) {
+    const userWithEmail = await User.findOne({
+        email: profile.emails[0].value
+    })
+    if (!user && userWithEmail) return done(null, false, {
+        message: "Try logging in with Facebook or a local account"
+    })
+    if (!user && !userWithEmail) {
         const user = await User.create({
             email: profile.emails[0].value,
             googleID: profile.id,
             image: profile.photos[0].value,
             username: profile.name.givenName
         })
-        done(null, user)
+        return done(null, user)
     }
     done(null, user)
 }))
