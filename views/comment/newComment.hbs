@@ -1,44 +1,35 @@
-<style>
-  .main-text{
-    padding-bottom:50px;
-  }
-</style>
-
 <div class="main-text">
   <h4>Post your comment</h4>
 
   <form action="/comment/newComment" method="POST" id="form-container" enctype="multipart/form-data">
 
-  <label for="image">Image:</label>
-  <div class="custom-file">
-    <label class="profile-image custom-file-label" for="image">
-    Image of the place
-    </label>
-    <input type="file" name="image" class="custom-file-input">
-  </div>
+    <label for="image">Image:</label>
+    <div class="custom-file">
+      <label class="profile-image custom-file-label" for="image">
+        Image of the place
+      </label>
+      <input type="file" name="image" class="custom-file-input">
+    </div>
 
-  <label for="content">Content:</label>
-  <input type="text" name="content">
-  <br>
+    <label for="content">Content:</label>
+    <input type="text" name="content">
+    <br>
 
-  <label for="scoreMasks">Masks:</label>
-  <input type="number" min="0" max="5" name="scoreMasks" placeholder="0">
-  <br>
+    <label for="scoreMasks">Masks:</label>
+    <input type="number" min="0" max="5" name="scoreMasks" placeholder="0">
+    <br>
 
-  <label for="scoreGel">Gel:</label>
-  <input type="number" min="0" max="5" name="scoreGel" placeholder="0">
-  <br>
-  
-  <label for="scoreClean">Clean:</label>
-  <input type="number" min="0" max="5" name="scoreClean" placeholder="0">
-  <br>
+    <label for="scoreGel">Gel:</label>
+    <input type="number" min="0" max="5" name="scoreGel" placeholder="0">
+    <br>
 
-  <label for="scoreService">Service:</label>
-  <input type="number" min="0" max="5" name="scoreService" placeholder="0">
+    <label for="scoreClean">Clean:</label>
+    <input type="number" min="0" max="5" name="scoreClean" placeholder="0">
+    <br>
 
-  <button type="submit" class="submitbtn my-btn">Create</button>
+    <label for="scoreService">Service:</label>
+    <input type="number" min="0" max="5" name="scoreService" placeholder="0">
+
+    <button type="submit" class="submitbtn my-btn">Create</button>
   </form>
 </div>
-
-  
-

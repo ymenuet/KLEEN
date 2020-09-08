@@ -1,5 +1,4 @@
 const Comment = require("../models/Comment");
-const User = require("../models/User");
 const Place = require("../models/Place");
 
 //All comments in the detail page
@@ -23,10 +22,13 @@ exports.createCommentProcess = async(req, res) => {
         scoreClean,
         scoreService
     } = req.body;
+
     let image;
     if (req.file) image = req.file.path;
 
-    const avgScore = (parseInt(scoreMasks) + parseInt(scoreService) + parseInt(scoreGel) + parseInt(scoreClean)) / 4;
+    const truncNum = num => parseFloat(num.toFixed(1))
+
+    const avgScore = truncNum((parseInt(scoreMasks) + parseInt(scoreService) + parseInt(scoreGel) + parseInt(scoreClean)) / 4);
 
     const newComment = await Comment.create({
         author: req.user._id,
@@ -40,7 +42,6 @@ exports.createCommentProcess = async(req, res) => {
         avgScore
     })
 
-    const truncNum = num => parseFloat(num.toFixed(1))
 
     const calculateNewAvg = (object, add) => {
         return {
