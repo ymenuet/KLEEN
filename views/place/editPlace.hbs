@@ -38,14 +38,15 @@
 
     <label for="input-image-place">Upload new image for this place:</label>
     <div class="custom-file">
-      <label class="profile-image custom-file-label" for="image">
+      <label class="profile-image custom-file-label" for="input-image-place">
+        Add a picture from the place
       </label>
-      <input type="file" name="image" class="custom-file-input">
+      <input type="file" name="image" class="custom-file-input" id="input-image-place" onchange="displayFileName()">
     </div>
     <p class="error-message">{{errorImage}}</p>
 
-    <button class="my-btn login" type="submit">Update place</button>
-    <button class="my-btn"><a href="/places/{{place._id}}">Cancel</a></button>
+    <button class="my-btn submitbtn" type="submit">Update place</button>
+    <button class="my-btn login"><a href="/places/{{place._id}}" style="display:block;">Cancel</a></button>
   </form>
 </div>
 

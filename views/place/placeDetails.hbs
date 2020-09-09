@@ -55,9 +55,9 @@
         <label for="image">Upload an image if you want:</label>
         <div class="custom-file">
           <label class="profile-image custom-file-label " for="image">
-            Image of the place
+            Add a picture from the place
           </label>
-          <input type="file" name="image" class="custom-file-input">
+          <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
           <span class="upload"><i class="fas fa-upload"></i></span>
         </div>
 
@@ -68,7 +68,7 @@
     <div class='comments-list'>
       {{#each place.comments}}
       <div class="comments">
-        <h5>Commented by {{author.username}} <img class="comment-profile-img"src="{{author.image}}" alt="image"> </h5>
+        <h5>Commented by {{author.username}} <img class="comment-profile-img" src="{{author.image}}" alt="image"> </h5>
         <p>{{createdAt}}</p>
         <ul class="toleft">
           {{#if scoreMasks}}
@@ -107,9 +107,8 @@
     center: [{{ place.location.coordinates }}]
     })
 
-    /*Desde aqui*/
-   document.querySelector(".upload").addEventListener("click",()=>{
-      document.querySelector(".custom-file-label").innerHTML = document.querySelector(".custom-file-input").value;
-    })
+  document.querySelector(".upload").addEventListener("click", () => {
+    document.querySelector(".custom-file-label").innerHTML = document.querySelector(".custom-file-input").value;
+  })
   }
 </script>

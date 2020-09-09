@@ -13,3 +13,7 @@ function checkOther() {
     if ($selectCategory.value === 'Other') $otherCategory.style.display = 'block'
     else $otherCategory.style.display = 'none'
 }
+
+function displayFileName() {
+    document.querySelector(".custom-file-label").innerHTML = document.querySelector(".custom-file-input").value;
+}
