@@ -1,17 +1,6 @@
 const Comment = require("../models/Comment");
 const Place = require("../models/Place");
 
-exports.allComments = async(req, res) => {
-    const comments = await Comment.find().populate("author");
-    res.render("place/placeDetail", {
-        comments
-    });
-}
-
-exports.createCommentView = (req, res) => {
-    res.render("comment/newComment")
-}
-
 exports.createCommentProcess = async(req, res) => {
     const {
         content,
