@@ -14,7 +14,8 @@ const placeSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Bar", "Bookstore", "Cinema", "Gym", "Hotel", "Nightclub", "Restaurant", "Store", "Theater", "Other"]
+        enum: ["Bar", "Bookstore", "Cinema", "Gym", "Hotel", "Nightclub", "Restaurant", "Store", "Theater", "Other"],
+        required: true
     },
     description: String,
     otherCategory: String,

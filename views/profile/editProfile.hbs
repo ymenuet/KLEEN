@@ -1,10 +1,12 @@
 <div class="main-text">
   <h2>Edit your account</h2>
-
+  {{#if error}}
+  <p class="error-message">{{error}}</p>
+  {{/if}}
   <form action="/profile/editProfile" method="POST" id="form-container" enctype="multipart/form-data">
     <br>
     <label for="username">Username:</label>
-    <input id="username" type="text" name="username" placeholder="Your username" value="{{user.username}}">
+    <input id="username" type="text" name="username" placeholder="Your username" value="{{user.username}}" required>
     <br>
     <br>
     <label class="profile-image" for="image">

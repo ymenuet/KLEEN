@@ -14,6 +14,10 @@ exports.editProfileProcess = async(req, res) => {
         username
     } = req.body;
 
+    if (username === '') return res.render('profile/editProfile', {
+        error: "Please enter a username"
+    })
+
     let image = req.user.image;
     if (req.file) image = req.file.path
 

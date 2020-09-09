@@ -3,12 +3,16 @@
 
   <form action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
     <br>
-    <label for="username">Username:</label>
-    <input id="username" type="text" name="username" placeholder="Your username">
+    <label for="email" class="required-label">Email (required):</label>
+    <input id="email" type="text" name="email" placeholder="Your email" required>
     <br>
     <br>
-    <label for="email">Email:</label>
-    <input id="email" type="text" name="email" placeholder="Your email">
+    <label for="username" class="required-label">Username (required):</label>
+    <input id="username" type="text" name="username" placeholder="Your username" required>
+    <br>
+    <br>
+    <label for="password" class="required-label">Password (required):</label>
+    <input id="password" type="password" name="password" placeholder="Your password" required>
     <br>
     <br>
     <label class="profile-image" for="image">
@@ -20,10 +24,6 @@
       </label>
       <input type="file" name="image" class="custom-file-input">
     </div>
-    <br>
-    <br>
-    <label for="password">Password:</label>
-    <input id="password" type="password" name="password" placeholder="Your password">
     <br>
     <br>
     <br>
