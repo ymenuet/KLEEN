@@ -10,14 +10,14 @@
   <a class="login my-btn" href="/places/delete/{{place._id}}">Delete place</a>
   {{/if}}
 
-   <div class="avg-box">
-      <p>Avarage Score : {{place.averageScore}}</p>
-      <p>Avarage Score : {{place.contributions}}</p>
-      <p>Avarage Score : {{place.avgMasks}}</p>
-      <p>Avarage Score : {{place.avgGel}}</p>
-      <p>Avarage Score : {{place.avgClean}}</p>
-      <p>Avarage Score : {{place.avgService}}</p>
-   </div>
+  <div class="avg-box">
+    <p>Average Score: {{place.averageScore}} (total of {{place.contributions}} comments)</p>
+    <hr>
+    <p>Facemask policy score: {{place.avgMasks}}</p>
+    <p>Gel and Soap score: {{place.avgGel}}</p>
+    <p>Cleanliness score: {{place.avgClean}}</p>
+    <p>Service score: {{place.avgService}}</p>
+  </div>
 
 
   <div class="about-comment">
@@ -62,7 +62,7 @@
 
         <button type="submit" class="submitbtn my-btn">Post comment</button>
       </form>
-    </div>    
+    </div>
 
     <div class='comments-list'>
       {{#each place.comments}}
