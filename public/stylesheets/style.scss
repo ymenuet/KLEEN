@@ -3,6 +3,12 @@
     color:#333;
 }
 
+img{
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+}
+
 html,
 body {
     padding: 0;
@@ -11,6 +17,8 @@ body {
 
 body {
     font: 14px;
+    background: #d1c7f1;
+    animation:bg-move 10s ease 1s infinite;
 }
 
 .error-message {
@@ -155,7 +163,8 @@ form {
 
 /* SIGN  UP & LOGIN FORMS */
 
-.main-text input{
+.main-text input,
+select{
     padding: 10px;
     width: 90%;
     border-radius: 30px;
@@ -247,15 +256,6 @@ form {
 }
 
 /* PLACES */
-.card{
-   overflow: hidden;
-   transition: 1.5s all;
-}
-
-.card:hover{
-    transform:scale(1.1);;
-}
-
 .card-title{
     color: #746AF6;
 }
@@ -315,3 +315,13 @@ form {
         margin:10px;
     }
 }
+
+/*Background*/
+@keyframes bg-move{
+     0%{background: #fff;}
+     20%{background: #D8C5F9;}
+     40%{background: #DEDBEB;}
+     60%{background: #fff;}
+     80%{background: #DEDBEB;}
+     100%{background: #FCFBFF;}
+    }
