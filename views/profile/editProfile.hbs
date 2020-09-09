@@ -2,27 +2,23 @@
   <h2>Edit your account</h2>
 
   <form action="/profile/editProfile" method="POST" id="form-container" enctype="multipart/form-data">
-      <br>
-      <label for="username">Username:</label>
-      <input id="username" type="text" name="username" placeholder="Your username">
-      <br>
-      <br>
-      <label for="email">Email:</label>
-      <input id="email" type="text" name="email" placeholder="Your email">
-      <br>
-      <br>
-      <label class="profile-image" for="image">
-        Profile picture:
+    <br>
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" placeholder="Your username" value="{{user.username}}">
+    <br>
+    <br>
+    <label class="profile-image" for="image">
+      Update profile picture:
+    </label>
+    <div class="custom-file">
+      <label class="profile-image custom-file-label" for="image">
+        Your photo
       </label>
-      <div class="custom-file">
-        <label class="profile-image custom-file-label" for="image">
-          Your photo
-        </label>
-        <input type="file" name="image" class="custom-file-input">
-      </div>
-      <br>
-      <br>
-      <br>
-      <button type="submit" class="my-btn submitbtn">Edit</button>
+      <input type="file" name="image" class="custom-file-input">
+    </div>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class="my-btn submitbtn">Update profile</button>
   </form>
 </div>

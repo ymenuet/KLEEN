@@ -1,25 +1,25 @@
-const User =  require("../models/User")
+const User = require("../models/User")
 
-exports.editProfileView = (req, res)=>{
-  res.render("profile/editProfile")
+exports.viewProfile = (req, res) => {
+    const user = req.user
+    res.render("profile/profile", user)
 }
 
-exports.editProfileProcess = async (req, res)=>{
-  const {
-    username, email
-  } = req.body;
+exports.editProfileView = (req, res) => {
+    res.render("profile/editProfile")
+}
 
-  let image;
-    if (req.file) {
-        image = req.file.path
-    }else{
-        image = "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg";
-    }
+exports.editProfileProcess = async(req, res) => {
+    const {
+        username
+    } = req.body;
+
+    let image = req.user.image;
+    if (req.file) image = req.file.path
 
     await User.findByIdAndUpdate(req.user._id, {
-      username, 
-      email, 
-      image
+        username,
+        image
     })
-    res.redirect("/profile/profile")
+    res.redirect("/profile")
 }
