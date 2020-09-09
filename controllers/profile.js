@@ -1,8 +1,10 @@
 const User = require("../models/User")
+const Comment = require("../models/Comment")
 
-exports.viewProfile = (req, res) => {
+exports.viewProfile = async (req, res) => {
     const user = req.user
-    res.render("profile/profile", user)
+    const comments = await Comment.find({author : req.user._id})
+    res.render("profile/profile", {user, comments})
 }
 
 exports.editProfileView = (req, res) => {

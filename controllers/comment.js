@@ -100,3 +100,4 @@ exports.deleteComment = async(req, res) => {
     await Comment.findByIdAndDelete(req.params.commentId);
     res.redirect("/");
 }
+

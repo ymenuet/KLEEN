@@ -18,7 +18,7 @@ body {
 body {
     font: 14px;
     background: #d1c7f1;
-    animation:bg-move 10s ease 1s infinite;
+    animation:bg-move 10s ease 2s infinite;
 }
 
 .error-message {
@@ -33,10 +33,26 @@ form {
     padding-bottom: 50px;
 }
 
-/*FONT AWESOME*/
+.upload{
+    color:tomato;
+    font-weight: bold;
+    font-size: 42px;
+}
+
+span{
+    color:tomato;
+    font-size:32px;
+}
+
+/*ICONOS*/
 .fa-star{
     color:rgb(241, 179, 43);
 }
+
+.fa-upload{
+    color : #746AF6
+}
+
 
 /* BUTTONS */
 
@@ -223,6 +239,8 @@ select{
     max-width: 500px;
 }
 
+
+
 .iconos {
     margin-bottom: 10px;
 }
@@ -302,12 +320,12 @@ select{
     padding: 30px;
     border-radius: 10px;
     overflow: hidden;
-    transition: 1.5s all;
+    transition: 0.8s all;
 }
 
 .comments:hover{
-    transform:scale(1.1);
-    background:-webkit-linear-gradient(top, #F6F8F9, #F8EFFD);
+    transform:scale(1);
+    background:#fff;
 }
 
 .add-comment{
@@ -321,13 +339,26 @@ select{
 .avg-box{
     width:70%;
     margin-top: 50px;
-    background-color: rgb(242, 246, 255);
+    background-color: #fff;
     padding: 10px;
     border-radius:10px;
 }
 
 .avg-box p{
     margin:0;
+}
+
+.comment-profile-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.comment-img{
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 @media (min-width:768px){
@@ -357,10 +388,10 @@ select{
 
 /*Background*/
 @keyframes bg-move{
-     0%{background: #fff;}
+     0%{background: rgb(206, 185, 250);}
      20%{background: #D8C5F9;}
-     40%{background: #DEDBEB;}
-     60%{background: #fff;}
+     40%{background: #b7aaf3;}
+     60%{background: rgb(211, 189, 230);}
      80%{background: #DEDBEB;}
-     100%{background: #FCFBFF;}
+     100%{background: #d3c7f7;}
     }
