@@ -5,7 +5,7 @@ const {
     createCommentProcess,
     editCommentView,
     editCommentProcess,
-    deleteComment
+    deleteComment,
 } = require("../controllers/comment");
 
 const upload = require('../config/cloudinary')

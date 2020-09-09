@@ -8,7 +8,7 @@ const {
 const {
     viewProfile,
     editProfileView,
-    editProfileProcess
+    editProfileProcess,
 } = require("../controllers/profile")
 
 /* GET home page */
@@ -22,5 +22,6 @@ router.get("/profile", ensureLogin, viewProfile)
 /* Edit Profile */
 router.get("/profile/editProfile", ensureLogin, editProfileView)
 router.post("/profile/editProfile", ensureLogin, upload.single('image'), editProfileProcess)
+
 
 module.exports = router;

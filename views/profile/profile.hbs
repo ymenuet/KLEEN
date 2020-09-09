@@ -1,10 +1,25 @@
 <div class="main-text">
   <div class="user-info">
-    <h2>Welcome {{username}}</h2>
-    <img src="{{image}}" alt="{{username}}">
+    <h2>Welcome {{user.username}}</h2>
+    <img src="{{user.image}}" alt="{{user.username}}">
   </div>
 
   <br>
   <a href="/profile/editProfile" class="my-btn submitbtn">Edit your profile</a>
   <a href="/places/new" class="my-btn login">Add a new place</a>
+
+  <div class="my-posts">
+    <div class="my-post">
+
+    </div>
+    <div class="my-comments">
+      <div class="comment">
+        {{#each comments}}
+          <h2>{{author.username}}</h2>
+          <p>{{content}}</p>
+          <img src="{{image}}" alt="{{author}}">
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </div>
