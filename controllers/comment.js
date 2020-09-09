@@ -44,7 +44,7 @@ exports.createCommentProcess = async(req, res) => {
 
     const averageScore = truncNum((newAvgs[0] + newAvgs[1] + newAvgs[2] + newAvgs[3]) / 4)
 
-    await Place.findByIdAndUpdate(req.params.placeId, {
+    const avg = await Place.findByIdAndUpdate(req.params.placeId, {
         $push: {
             comments: newComment._id
         },
@@ -56,7 +56,7 @@ exports.createCommentProcess = async(req, res) => {
         avgService: newAvgs[3],
     })
 
-    res.redirect(`/places/${req.params.placeId}`)
+    res.redirect(`/places/${req.params.placeId}`, avg)
 }
 
 exports.editCommentView = async(req, res) => {

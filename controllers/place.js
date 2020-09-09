@@ -105,7 +105,7 @@ exports.viewPlace = async(req, res) => {
     res.render('place/placeDetails', {
         place,
         userCheck,
-        errorComment
+        errorComment,
     })
 }
 

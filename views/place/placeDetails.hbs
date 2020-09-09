@@ -10,6 +10,16 @@
   <a class="login my-btn" href="/places/delete/{{place._id}}">Delete place</a>
   {{/if}}
 
+   <div class="avg-box">
+      <p>Avarage Score : {{place.averageScore}}</p>
+      <p>Avarage Score : {{place.contributions}}</p>
+      <p>Avarage Score : {{place.avgMasks}}</p>
+      <p>Avarage Score : {{place.avgGel}}</p>
+      <p>Avarage Score : {{place.avgClean}}</p>
+      <p>Avarage Score : {{place.avgService}}</p>
+   </div>
+
+
   <div class="about-comment">
     <div class="add-comment">
       <h4>Post your comment</h4>
@@ -46,7 +56,7 @@
 
         <button type="submit" class="submitbtn my-btn">Create</button>
       </form>
-    </div>
+    </div>    
 
     <div class='comments-list'>
       {{#each place.comments}}
@@ -54,16 +64,19 @@
         <h5>Commented by {{author.username}}</h5>
         <ul class="toleft">
           {{#if scoreMasks}}
-          <li>Facemasks use: {{scoreMasks}}/5</li>
+          <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
+          {{/if}}
+          {{#if scoreMasks}}
+          <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
           {{/if}}
           {{#if scoreGel}}
-          <li>Antibacterial gel available: {{scoreGel}}/5</li>
+          <li>Antibacterial gel available: {{scoreGel}}<i class="fas fa-star"></i></li>
           {{/if}}
           {{#if scoreClean}}
-          <li>Cleanliness of the place: {{scoreClean}}/5</li>
+          <li>Cleanliness of the place: {{scoreClean}}<i class="fas fa-star"></i></li>
           {{/if}}
           {{#if scoreService}}
-          <li>Quality of service in general: {{scoreService}}/5</li>
+          <li>Quality of service in general: {{scoreService}}<i class="fas fa-star"></i></li>
           {{/if}}
         </ul>
         {{#if image}}

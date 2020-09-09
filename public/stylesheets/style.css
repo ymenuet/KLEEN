@@ -26,6 +26,10 @@ form {
 .container {
   padding-bottom: 50px; }
 
+/*FONT AWESOME*/
+.fa-star {
+  color: #f1b32b; }
+
 /* BUTTONS */
 .my-btn {
   border: none;
@@ -98,8 +102,10 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 120px;
   text-align: center; }
+
+.main-text {
+  padding-top: 120px; }
 
 .main-text h1 {
   font-size: 4rem;
@@ -239,8 +245,21 @@ select {
   transform: scale(1.1);
   background: -webkit-linear-gradient(top, #F6F8F9, #F8EFFD); }
 
+.add-comment {
+  margin-top: 30px; }
+
 .toleft {
   text-align: left; }
+
+.avg-box {
+  width: 70%;
+  margin-top: 50px;
+  background-color: #f2f6ff;
+  padding: 10px;
+  border-radius: 10px; }
+
+.avg-box p {
+  margin: 0; }
 
 @media (min-width: 768px) {
   .about-comment {
@@ -254,7 +273,8 @@ select {
   .comments-list {
     display: flex;
     width: 50%;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    padding-top: 60px; }
   .comments {
     margin: 10px; } }
 
