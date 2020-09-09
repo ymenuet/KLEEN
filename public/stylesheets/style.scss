@@ -33,6 +33,10 @@ form {
     padding-bottom: 50px;
 }
 
+/*FONT AWESOME*/
+.fa-star{
+    color:rgb(241, 179, 43);
+}
 
 /* BUTTONS */
 
@@ -124,8 +128,11 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 120px;
     text-align: center;
+}
+
+.main-text{
+    padding-top: 120px;
 }
 
 .main-text h1 {
@@ -303,11 +310,25 @@ select{
     background:-webkit-linear-gradient(top, #F6F8F9, #F8EFFD);
 }
 
+.add-comment{
+    margin-top:30px;
+}
+
 .toleft{
     text-align: left;
 }
 
+.avg-box{
+    width:70%;
+    margin-top: 50px;
+    background-color: rgb(242, 246, 255);
+    padding: 10px;
+    border-radius:10px;
+}
 
+.avg-box p{
+    margin:0;
+}
 
 @media (min-width:768px){
     .about-comment{
@@ -319,13 +340,14 @@ select{
 
     .add-comment{
         width: 50%;
-        margin-top:50px
+        margin-top:50px;
     }
 
     .comments-list{
         display: flex;
         width:50%;
         flex-wrap: wrap;
+        padding-top:60px;
     }
 
     .comments{
