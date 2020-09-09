@@ -1,71 +1,73 @@
 <div class="main-text">
-  <h2 class="card-title">{{name}}</h2>
+  <h2 class="card-title">{{place.name}}</h2>
   <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
 
-    <a class="signup my-btn" href="/places/edit/{{_id}}">Edit place</a>
-    <a class="login my-btn" href="/places/delete/{{_id}}">Delete place</a>
+  {{#if userCheck}}
+  <a class="signup my-btn" href="/places/edit/{{place._id}}">Edit place</a>
+  <a class="login my-btn" href="/places/delete/{{place._id}}">Delete place</a>
+  {{/if}}
 
-    <div class="about-comment">
-      <div class="add-comment">
-        <h4>Post your comment</h4>
+  <div class="about-comment">
+    <div class="add-comment">
+      <h4>Post your comment</h4>
 
-        <form action="/comment/newComment/{{_id}}" method="POST" id="form-container" enctype="multipart/form-data">
+      <form action="/comment/newComment/{{place._id}}" method="POST" id="form-container" enctype="multipart/form-data">
 
-          <label for="image">Image:</label>
-          <div class="custom-file">
-            <label class="profile-image custom-file-label" for="image">
-              Image of the place
-            </label>
-            <input type="file" name="image" class="custom-file-input">
-          </div>
+        <label for="image">Image:</label>
+        <div class="custom-file">
+          <label class="profile-image custom-file-label" for="image">
+            Image of the place
+          </label>
+          <input type="file" name="image" class="custom-file-input">
+        </div>
 
-          <label for="content">Description:</label>
-          <input type="text" name="content">
-          <br>
+        <label for="content">Description:</label>
+        <input type="text" name="content">
+        <br>
 
-          <label for="scoreMasks">Masks:</label>
-          <input type="number" min="0" max="5" name="scoreMasks" placeholder="0">
-          <br>
+        <label for="scoreMasks">Masks:</label>
+        <input type="number" min="0" max="5" name="scoreMasks" placeholder="0">
+        <br>
 
-          <label for="scoreGel">Gel:</label>
-          <input type="number" min="0" max="5" name="scoreGel" placeholder="0">
-          <br>
+        <label for="scoreGel">Gel:</label>
+        <input type="number" min="0" max="5" name="scoreGel" placeholder="0">
+        <br>
 
-          <label for="scoreClean">Clean:</label>
-          <input type="number" min="0" max="5" name="scoreClean" placeholder="0">
-          <br>
+        <label for="scoreClean">Clean:</label>
+        <input type="number" min="0" max="5" name="scoreClean" placeholder="0">
+        <br>
 
-          <label for="scoreService">Service:</label>
-          <input type="number" min="0" max="5" name="scoreService" placeholder="0">
+        <label for="scoreService">Service:</label>
+        <input type="number" min="0" max="5" name="scoreService" placeholder="0">
 
-          <button type="submit" class="submitbtn my-btn">Create</button>
-        </form>
+        <button type="submit" class="submitbtn my-btn">Create</button>
+      </form>
+    </div>
+
+    <div class='comments-list'>
+      {{#each place.comments}}
+      <div class="comments">
+        <h5>Commented by {{author.username}}</h5>
+        <ul>
+          {{#if scoreMasks}}
+          <li>Facemasks use: {{scoreMasks}}/5</li>
+          {{/if}}
+          {{#if scoreGel}}
+          <li>Antibacterial gel available: {{scoreGel}}/5</li>
+          {{/if}}
+          {{#if scoreClean}}
+          <li>Cleanliness of the place: {{scoreClean}}/5</li>
+          {{/if}}
+          {{#if scoreService}}
+          <li>Quality of service in general: {{scoreService}}/5</li>
+          {{/if}}
+        </ul>
+        {{#if image}}
+        <img src="{{image}}" alt="Image">
+        {{/if}}
+        <p>{{content}}</p>
       </div>
-
-      <div class='comments-list'>
-        {{#each comments}}
-          <div class="comments">
-            <h5>Commented by {{author.username}}</h5>
-            <ul>
-              {{#if scoreMasks}}
-              <li>Facemasks use: {{scoreMasks}}/5</li>
-              {{/if}}
-              {{#if scoreGel}}
-              <li>Antibacterial gel available: {{scoreGel}}/5</li>
-              {{/if}}
-              {{#if scoreClean}}
-              <li>Cleanliness of the place: {{scoreClean}}/5</li>
-              {{/if}}
-              {{#if scoreService}}
-              <li>Quality of service in general: {{scoreService}}/5</li>
-              {{/if}}
-            </ul>
-            {{#if image}}
-            <img src="{{image}}" alt="Image">
-            {{/if}}
-            <p>{{content}}</p>
-          </div>
-        {{/each}}
+      {{/each}}
     </div>
   </div>
 </div>
@@ -74,10 +76,10 @@
 <script>
   window.onload = () => {
     let marker = new mapboxgl.Marker()
-      .setLngLat([{{ location.coordinates }}])
+      .setLngLat([{{ place.location.coordinates }}])
       .addTo(map);
   map.flyTo({
-    center: [{{ location.coordinates }}]
+    center: [{{ place.location.coordinates }}]
     })
   }
 </script>

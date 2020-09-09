@@ -3,12 +3,66 @@
   <h3>We help you getting out of your home without worrying for your health!</h3>
 
   {{#if user}}
-  <form action="/places" method="GET" class="homepage-form">
+  <form action="/places/quick-search" method="GET" class="homepage-form">
     <i class="fas fa-search"></i>
     <input type="text" name="search" placeholder='Type the name of a place' class="my-btn">
     <br>
     <button class="submitbtn my-btn" type="submit">Search</button>
   </form>
+  <button type="button" class="my-btn login" data-toggle="modal" data-target="#advancedSearch">
+    Advanced Search
+  </button>
+
+  <div class="modal fade" id="advancedSearch" tabindex="-1" role="dialog" aria-labelledby="advancedSearchTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Advanced Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/places/search" method="GET">
+          <div class="modal-body">
+            <label for="search-category">Category</label>
+            <select name="category" id="search-category">
+              <option value="" disabled selected>Select a category:</option>
+              <option value="Bar">Bar</option>
+              <option value="Cinema">Cinema</option>
+              <option value="Gym">Gym</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Nightclub">Nightclub</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Store">Store</option>
+              <option value="Theatre">Theater</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <label for="avg-score">Minimum overall average score (out of 5):</label>
+            <input type="number" min="0" max="5" name="averageScore" id="avg-score" value="0">
+
+            <label for="mask-score">Minimum average score for the facemask policy (out of 5):</label>
+            <input type="number" min="0" max="5" name="avgMasks" id="mask-score" value="0">
+
+            <label for="gel-score">Minimum average score for the antibacterial gel policy (out of 5):</label>
+            <input type="number" min="0" max="5" name="avgGel" id="gel-score" value="0">
+
+            <label for="clean-score">Minimum average score for the cleaning policy (out of 5):</label>
+            <input type="number" min="0" max="5" name="avgClean" id="clean-score" value="0">
+
+            <label for="service-score">Minimum average score for the service (out of 5):</label>
+            <input type="number" min="0" max="5" name="avgService" id="service-score" value="0">
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="my-btn signup">Search</button>
+            <button type="button" class="my-btn login" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <a href="/places" class="my-btn login">See all the places</a>
   {{else}}
   <a href="/auth/signup" class="signup my-btn">Signup</a>

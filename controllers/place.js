@@ -44,10 +44,47 @@ exports.searchPlaces = async(req, res) => {
     const {
         name
     } = req.query;
-    nameArr = name.split(' ')
+
+    let nameArr = [];
+    if (name) nameArr = name.split(' ')
     const places = await Place.find({
         name: RegExp(`/${name}|${nameArr[0]}|${nameArr[1]}|${nameArr[2]}|${nameArr[3]}|${nameArr[4]}/`)
     })
+    res.render('place/places', {
+        places
+    })
+}
+
+exports.advancedSearchPlaces = async(req, res) => {
+    const {
+        category,
+        averageScore,
+        avgMasks,
+        avgGel,
+        avgClean,
+        avgService
+    } = req.query;
+    const places = await Place.find({
+        category,
+        averageScore: {
+            $gte: averageScore
+        },
+        // avgMasks: {
+        //     avg: {
+        //         $gte: avgMasks
+        //     }
+        // },
+        // avgGel: {
+        //     $gte: avgGel
+        // },
+        // avgClean: {
+        //     $gte: avgClean
+        // },
+        // avgService: {
+        //     $gte: avgService
+        // }
+    })
+
     res.render('place/places', {
         places
     })
@@ -62,7 +99,12 @@ exports.viewPlace = async(req, res) => {
             model: 'User'
         }
     });
-    res.render('place/placeDetails', place)
+    let userCheck = false;
+    if (`${place.creator}` === `${req.user._id}`) userCheck = true
+    res.render('place/placeDetails', {
+        place,
+        userCheck
+    })
 }
 
 exports.editPlaceView = async(req, res) => {
