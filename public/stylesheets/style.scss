@@ -57,6 +57,7 @@ form {
 .submitbtn:hover {
     background: -webkit-linear-gradient(left, #746AF6, #D1A0F8);
     color: white;
+    text-decoration: none;
 }
 
 .login,
@@ -64,7 +65,8 @@ form {
     color: #746AF6;
     font-weight: 600;
     background: -webkit-linear-gradient(left, #BEBAE5, #F8F3FC);
-    margin: 0px 15%;
+    margin: 0px 15% 20px 15%;
+    text-decoration: none;
 }
 
 
@@ -76,6 +78,11 @@ form {
 
 .navbar {
     padding: 10px 20px;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .navbar-btn,
@@ -117,7 +124,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 120px;
     text-align: center;
 }
 
@@ -256,6 +263,12 @@ select{
 }
 
 /* PLACES */
+.card{
+    background-color:transparent;
+    margin-bottom:10px;
+    border:none;
+}
+
 .card-title{
     color: #746AF6;
 }
@@ -263,6 +276,7 @@ select{
 .card-image{
     width: 100%;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .card-image img:hover{
@@ -278,7 +292,7 @@ select{
 .comments{
     border:1px solid #eee;
     margin: 10px 0;
-    padding: 10px;
+    padding: 30px;
     border-radius: 10px;
     overflow: hidden;
     transition: 1.5s all;
@@ -289,20 +303,23 @@ select{
     background:-webkit-linear-gradient(top, #F6F8F9, #F8EFFD);
 }
 
-.comments ul{
+.toleft{
     text-align: left;
 }
+
+
 
 @media (min-width:768px){
     .about-comment{
         display: flex;
-        width: 1500px;
+        width: 100%;
         justify-content: space-between;
         margin-top:80px;
     }
 
     .add-comment{
         width: 50%;
+        margin-top:50px
     }
 
     .comments-list{

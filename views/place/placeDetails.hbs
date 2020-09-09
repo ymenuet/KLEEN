@@ -52,7 +52,7 @@
       {{#each place.comments}}
       <div class="comments">
         <h5>Commented by {{author.username}}</h5>
-        <ul>
+        <ul class="toleft">
           {{#if scoreMasks}}
           <li>Facemasks use: {{scoreMasks}}/5</li>
           {{/if}}
@@ -69,7 +69,7 @@
         {{#if image}}
         <img src="{{image}}" alt="Image">
         {{/if}}
-        <p>{{content}}</p>
+        <p class="toleft">{{content}}</p>
       </div>
       {{/each}}
     </div>
