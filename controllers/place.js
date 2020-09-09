@@ -40,6 +40,56 @@ exports.getPlaces = async(req, res) => {
     })
 }
 
+exports.searchPlaces = async(req, res) => {
+    const {
+        name
+    } = req.query;
+
+    let nameArr = [];
+    if (name) nameArr = name.split(' ')
+    const places = await Place.find({
+        name: RegExp(`/${name}|${nameArr[0]}|${nameArr[1]}|${nameArr[2]}|${nameArr[3]}|${nameArr[4]}/`)
+    })
+    res.render('place/places', {
+        places
+    })
+}
+
+exports.advancedSearchPlaces = async(req, res) => {
+    const {
+        category,
+        averageScore,
+        avgMasks,
+        avgGel,
+        avgClean,
+        avgService
+    } = req.query;
+    const places = await Place.find({
+        category,
+        averageScore: {
+            $gte: averageScore
+        },
+        // avgMasks: {
+        //     avg: {
+        //         $gte: avgMasks
+        //     }
+        // },
+        // avgGel: {
+        //     $gte: avgGel
+        // },
+        // avgClean: {
+        //     $gte: avgClean
+        // },
+        // avgService: {
+        //     $gte: avgService
+        // }
+    })
+
+    res.render('place/places', {
+        places
+    })
+}
+
 exports.viewPlace = async(req, res) => {
     const place = await Place.findById(req.params.placeId).populate({
         path: 'comments',
@@ -49,7 +99,12 @@ exports.viewPlace = async(req, res) => {
             model: 'User'
         }
     });
-    res.render('place/placeDetails', place)
+    let userCheck = false;
+    if (`${place.creator}` === `${req.user._id}`) userCheck = true
+    res.render('place/placeDetails', {
+        place,
+        userCheck
+    })
 }
 
 exports.editPlaceView = async(req, res) => {
@@ -67,7 +122,9 @@ exports.editPlaceProcess = async(req, res) => {
         lat
     } = req.body
 
-    let image;
+    const currentPlace = await Place.findById(req.params.placeId)
+
+    let image = currentPlace.image;
     if (req.file) image = req.file.path;
 
     const updatedPlace = await Place.findByIdAndUpdate(req.params.placeId, {

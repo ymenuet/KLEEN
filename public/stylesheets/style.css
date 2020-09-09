@@ -2,13 +2,20 @@
   font-family: 'Roboto', sans-serif;
   color: #333; }
 
+img {
+  object-fit: cover;
+  height: 300px;
+  width: 300px; }
+
 html,
 body {
   padding: 0;
   margin: 0; }
 
 body {
-  font: 14px; }
+  font: 14px;
+  background: #d1c7f1;
+  animation: bg-move 10s ease 1s infinite; }
 
 .error-message {
   color: red; }
@@ -79,7 +86,8 @@ form {
     width: 100% !important; } }
 
 /* MAIN PAGE INDEX */
-.main-text {
+.main-text,
+.add-comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,8 +121,13 @@ form {
   top: 35px;
   padding-left: 15px; }
 
+@media (min-width: 768px) {
+  .main-text h3 {
+    width: 60%; } }
+
 /* SIGN  UP & LOGIN FORMS */
-.main-text input {
+.main-text input,
+select {
   padding: 10px;
   width: 90%;
   border-radius: 30px;
@@ -186,22 +199,64 @@ form {
   background-color: white !important; }
 
 /* PLACES */
-.card {
-  margin: 10px; }
-
 .card-title {
   color: #746AF6; }
 
 .card-image {
   width: 100%;
-  overflow: hidden;
-  transition: 1s all; }
+  overflow: hidden; }
 
 .card-image img:hover {
   transform: scale(1.5);
-  transition: 1s all; }
+  transition: 2s all; }
 
 .detail {
   display: block; }
+
+/* PLACE DETAIL */
+.comments {
+  border: 1px solid #eee;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 1.5s all; }
+
+.comments:hover {
+  transform: scale(1.1);
+  background: -webkit-linear-gradient(top, #F6F8F9, #F8EFFD); }
+
+.comments ul {
+  text-align: left; }
+
+@media (min-width: 768px) {
+  .about-comment {
+    display: flex;
+    width: 1500px;
+    justify-content: space-between;
+    margin-top: 80px; }
+  .add-comment {
+    width: 50%; }
+  .comments-list {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap; }
+  .comments {
+    margin: 10px; } }
+
+/*Background*/
+@keyframes bg-move {
+  0% {
+    background: #fff; }
+  20% {
+    background: #D8C5F9; }
+  40% {
+    background: #DEDBEB; }
+  60% {
+    background: #fff; }
+  80% {
+    background: #DEDBEB; }
+  100% {
+    background: #FCFBFF; } }
 
 /*# sourceMappingURL=style.css.map */

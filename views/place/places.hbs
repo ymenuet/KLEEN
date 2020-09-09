@@ -1,4 +1,8 @@
 <div class="main-text">
+  {{#unless places}}
+  <h1>You tried and couldn't find the place you are looking for?</h1>
+  <a href="/places/new" class="my-btn">Add a new place here</a>
+  {{else}}
   <div class="row">
     {{#each places}}
     <div class="card col-12 col-md-6 col-lg-4">
@@ -18,4 +22,5 @@
     </div>
     {{/each}}
   </div>
+  {{/unless}}
 </div>

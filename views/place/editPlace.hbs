@@ -7,10 +7,14 @@
     <label for="place-category" class="required-label">Category (required):</label>
     <select name="category" id="place-category" required>
       <option value="{{category}}" selected disabled>{{category}}</option>
-      <option value="Restaurant">Restaurant</option>
-      <option value="Hotel">Hotel</option>
-      <option value="Store">Store</option>
+      <option value="Bar">Bar</option>
+      <option value="Cinema">Cinema</option>
       <option value="Gym">Gym</option>
+      <option value="Hotel">Hotel</option>
+      <option value="Nightclub">Nightclub</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Store">Store</option>
+      <option value="Theatre">Theater</option>
       <option value="Other">Other</option>
     </select>
 
@@ -28,7 +32,11 @@
       the place with a location</p>
 
     <label for="input-image-place">Upload new image for this place:</label>
-    <input type="file" name="image" id="input-image-place">
+    <div class="custom-file">
+      <label class="profile-image custom-file-label" for="image">
+      </label>
+      <input type="file" name="image" class="custom-file-input">
+    </div>
 
     <button class="my-btn" type="submit">Update place</button>
   </form>

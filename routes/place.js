@@ -4,6 +4,8 @@ const {
     newPlaceView,
     newPlaceProcess,
     getPlaces,
+    searchPlaces,
+    advancedSearchPlaces,
     viewPlace,
     editPlaceView,
     editPlaceProcess,
@@ -22,6 +24,8 @@ router.post('/new', ensureLogin, upload.single('image'), catchErrors(newPlacePro
 
 // View places
 router.get('/', ensureLogin, catchErrors(getPlaces))
+router.get('/quick-search', ensureLogin, catchErrors(searchPlaces))
+router.get('/search', ensureLogin, catchErrors(advancedSearchPlaces))
 router.get('/:placeId', ensureLogin, catchErrors(viewPlace))
 
 // Edit places
