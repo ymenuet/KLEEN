@@ -15,9 +15,11 @@
     <div class="my-comments">
       <div class="comment">
         {{#each comments}}
-          <h2>{{author.username}}</h2>
-          <p>{{content}}</p>
-          <img src="{{image}}" alt="{{author}}">
+        <h2>{{author.username}}</h2>
+        <p>{{content}}</p>
+        {{#if image}}
+        <img src="{{image}}" alt="Comment image">
+        {{/if}}
         {{/each}}
       </div>
     </div>
