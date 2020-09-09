@@ -48,7 +48,7 @@ exports.searchPlaces = async(req, res) => {
     let nameArr = [];
     if (name) nameArr = name.split(' ')
     const places = await Place.find({
-        name: RegExp(`/${name}|${nameArr[0]}|${nameArr[1]}|${nameArr[2]}|${nameArr[3]}|${nameArr[4]}/`)
+        name: RegExp(`/${name}|${nameArr[0]}|${nameArr[1]}|${nameArr[2]}|${nameArr[3]}|${nameArr[4]}/i`)
     })
     res.render('place/places', {
         places
@@ -69,20 +69,18 @@ exports.advancedSearchPlaces = async(req, res) => {
         averageScore: {
             $gte: averageScore
         },
-        // avgMasks: {
-        //     avg: {
-        //         $gte: avgMasks
-        //     }
-        // },
-        // avgGel: {
-        //     $gte: avgGel
-        // },
-        // avgClean: {
-        //     $gte: avgClean
-        // },
-        // avgService: {
-        //     $gte: avgService
-        // }
+        avgMasks: {
+            $gte: avgMasks
+        },
+        avgGel: {
+            $gte: avgGel
+        },
+        avgClean: {
+            $gte: avgClean
+        },
+        avgService: {
+            $gte: avgService
+        }
     })
 
     res.render('place/places', {
@@ -99,11 +97,15 @@ exports.viewPlace = async(req, res) => {
             model: 'User'
         }
     });
+    const {
+        errorComment
+    } = req.query;
     let userCheck = false;
     if (`${place.creator}` === `${req.user._id}`) userCheck = true
     res.render('place/placeDetails', {
         place,
-        userCheck
+        userCheck,
+        errorComment
     })
 }
 

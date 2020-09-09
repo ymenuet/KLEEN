@@ -1,4 +1,7 @@
 <div class="main-text">
+  {{#if errorComment}}
+  <p class="error-message">{{errorComment}}</p>
+  {{/if}}
   <h2 class="card-title">{{place.name}}</h2>
   <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
 
@@ -39,6 +42,7 @@
 
         <label for="scoreService">Service:</label>
         <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
+
 
         <button type="submit" class="submitbtn my-btn">Create</button>
       </form>

@@ -14,13 +14,13 @@ const placeSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Bar", "Cinema", "Gym", "Hotel", "Nightclub", "Restaurant", "Store", "Theater", "Other"]
+        enum: ["Bar", "Bookstore", "Cinema", "Gym", "Hotel", "Nightclub", "Restaurant", "Store", "Theater", "Other"]
     },
     description: String,
     otherCategory: String,
     image: {
         type: String,
-        default: 'https://sisterhoodofstyle.com/wp-content/uploads/2018/02/no-image-1.jpg'
+        default: 'https://res.cloudinary.com/dlyw9xi3k/image/upload/v1599665580/KLEEN/default-image_xtrcyc.jpg'
     },
     location: {
         type: {
@@ -37,53 +37,33 @@ const placeSchema = new Schema({
         min: 0,
         max: 5
     },
+    contributions: {
+        type: Number,
+        default: 0
+    },
     avgMasks: {
-        avg: {
-            type: Number,
-            min: 0,
-            max: 5,
-            default: 0
-        },
-        numberOfScores: {
-            type: Number,
-            default: 0
-        }
+        type: Number,
+        min: 0,
+        max: 5,
+        default: 0
     },
     avgGel: {
-        avg: {
-            type: Number,
-            min: 0,
-            max: 5,
-            default: 0
-        },
-        numberOfScores: {
-            type: Number,
-            default: 0
-        }
+        type: Number,
+        min: 0,
+        max: 5,
+        default: 0
     },
     avgClean: {
-        avg: {
-            type: Number,
-            min: 0,
-            max: 5,
-            default: 0
-        },
-        numberOfScores: {
-            type: Number,
-            default: 0
-        }
+        type: Number,
+        min: 0,
+        max: 5,
+        default: 0
     },
     avgService: {
-        avg: {
-            type: Number,
-            min: 0,
-            max: 5,
-            default: 0
-        },
-        numberOfScores: {
-            type: Number,
-            default: 0
-        }
+        type: Number,
+        min: 0,
+        max: 5,
+        default: 0
     },
 }, {
     timestamps: true
