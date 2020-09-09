@@ -89,14 +89,20 @@ exports.advancedSearchPlaces = async(req, res) => {
 }
 
 exports.viewPlace = async(req, res) => {
-    const place = await Place.findById(req.params.placeId).populate({
-        path: 'comments',
-        model: 'Comment',
-        populate: {
-            path: 'author',
-            model: 'User'
-        }
-    });
+    const place = await Place.findById(req.params.placeId)
+        .populate({
+            path: 'comments',
+            model: 'Comment',
+            options: {
+                sort: {
+                    createdAt: -1
+                }
+            },
+            populate: {
+                path: 'author',
+                model: 'User'
+            }
+        });
     const {
         errorComment
     } = req.query;

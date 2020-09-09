@@ -12,11 +12,37 @@
 
   <div class="about-comment">
     <div class="add-comment">
-      <h4>Post your comment</h4>
+      <h4>Post a new comment</h4>
 
       <form action="/comment/newComment/{{place._id}}" method="POST" id="form-container" enctype="multipart/form-data">
 
-        <label for="image">Image:</label>
+
+        <label for="content">Description:</label>
+        <input type="text" name="content">
+        <br>
+        <br>
+        <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>
+
+        <label for="scoreMasks" class="required-label">Facemask policy: how would you rate theirs? (required)</label>
+        <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required>
+        <br>
+
+        <label for="scoreGel" class="required-label">Gel and soap: do they provide enough? (required)</label>
+        <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required>
+        <br>
+
+        <label for="scoreClean" class="required-label">Cleanliness: how would you rate the overall cleanliness of the
+          place and the sanitary measures taken there? (required)</label>
+        <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required>
+        <br>
+
+        <label for="scoreService" class="required-label">Service: were you satisfied with the service you were provided?
+          (required)</label>
+        <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
+        <br>
+        <br>
+
+        <label for="image">Upload an image if you want:</label>
         <div class="custom-file">
           <label class="profile-image custom-file-label" for="image">
             Image of the place
@@ -24,27 +50,7 @@
           <input type="file" name="image" class="custom-file-input">
         </div>
 
-        <label for="content">Description:</label>
-        <input type="text" name="content">
-        <br>
-
-        <label for="scoreMasks">Masks:</label>
-        <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required>
-        <br>
-
-        <label for="scoreGel">Gel:</label>
-        <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required>
-        <br>
-
-        <label for="scoreClean">Clean:</label>
-        <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required>
-        <br>
-
-        <label for="scoreService">Service:</label>
-        <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
-
-
-        <button type="submit" class="submitbtn my-btn">Create</button>
+        <button type="submit" class="submitbtn my-btn">Post comment</button>
       </form>
     </div>
 

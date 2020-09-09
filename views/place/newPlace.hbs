@@ -5,7 +5,7 @@
     <input type="text" name="name" required id="place-name">
 
     <label for="place-category" class="required-label">Category (required):</label>
-    <select name="category" id="place-category" required>
+    <select name="category" id="place-category" required onchange="checkOther()">
       <option value="" disabled selected>Select a category:</option>
       <option value="Bar">Bar</option>
       <option value="Bookstore">Bookstore</option>
@@ -19,8 +19,10 @@
       <option value="Other">Other</option>
     </select>
 
-    <label for="other-category">If other category, please specify:</label>
-    <input type="text" id="other-category" name="otherCategory">
+    <div class="other-category-fields" style="display: none;">
+      <label for="other-category">If other category, please specify:</label>
+      <input type="text" id="other-category" name="otherCategory">
+    </div>
 
     <label for="place-description">Description:</label>
     <input type="text" name="description" id="place-description">

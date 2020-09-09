@@ -19,4 +19,6 @@ window.onload = () => {
 
     const $geocoderInput = document.querySelector('.mapboxgl-ctrl-geocoder--input')
     $geocoderInput.placeholder = "Type place or address"
+
+    checkOther()
 }
