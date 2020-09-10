@@ -35,6 +35,14 @@ span {
   color: tomato;
   font-size: 32px; }
 
+button {
+  outline: none !important; }
+
+a,
+a:hover {
+  text-decoration: none;
+  color: unset; }
+
 /*ICONOS*/
 .fa-star {
   color: #f1b32b; }
@@ -57,7 +65,7 @@ span {
   transition: 0.2s all; }
 
 .my-btn:hover {
-  transform: scale(1.1); }
+  transform: scale(1.05); }
 
 .signup,
 .submitbtn,
@@ -301,9 +309,10 @@ select {
   margin: 0; }
 
 .comment-profile-img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%; }
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover; }
 
 .comment-img {
   height: 200px;
