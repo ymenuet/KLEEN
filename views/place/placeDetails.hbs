@@ -7,7 +7,29 @@
 
   {{#if userCheck}}
   <a class="signup my-btn" href="/places/edit/{{place._id}}">Edit place</a>
-  <a class="login my-btn" href="/places/delete/{{place._id}}">Delete place</a>
+
+<button type="button" class="my-btn login" data-toggle="modal" data-target="#delete-modal">
+  Delete place
+</button>
+
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete "{{place.name}}"</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete "{{place.name}}" ?
+      </div>
+        <a class="my-btn submitbtn" href="/places/delete/{{place._id}}">Yes, delete</a>
+        <button type="button" class="my-btn login" data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</div>
+
   {{/if}}
 
   <div class="avg-box">
@@ -58,7 +80,6 @@
             Add a picture from the place
           </label>
           <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
-          <span class="upload"><i class="fas fa-upload"></i></span>
         </div>
 
         <button type="submit" class="submitbtn my-btn">Post comment</button>
@@ -71,21 +92,11 @@
         <h5>Commented by {{author.username}} <img class="comment-profile-img" src="{{author.image}}" alt="image"> </h5>
         <p>{{createdAt}}</p>
         <ul class="toleft">
-          {{#if scoreMasks}}
+          <li>General average: {{avgScore}}<i class="fas fa-star"></i></li>
           <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
-          {{/if}}
-          {{#if scoreMasks}}
-          <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
-          {{/if}}
-          {{#if scoreGel}}
           <li>Antibacterial gel available: {{scoreGel}}<i class="fas fa-star"></i></li>
-          {{/if}}
-          {{#if scoreClean}}
           <li>Cleanliness of the place: {{scoreClean}}<i class="fas fa-star"></i></li>
-          {{/if}}
-          {{#if scoreService}}
           <li>Quality of service in general: {{scoreService}}<i class="fas fa-star"></i></li>
-          {{/if}}
         </ul>
         {{#if image}}
         <img class="comment-img" src="{{image}}" alt="Image">
@@ -106,9 +117,5 @@
   map.flyTo({
     center: [{{ place.location.coordinates }}]
     })
-
-  document.querySelector(".upload").addEventListener("click", () => {
-    document.querySelector(".custom-file-label").innerHTML = document.querySelector(".custom-file-input").value;
-  })
   }
 </script>

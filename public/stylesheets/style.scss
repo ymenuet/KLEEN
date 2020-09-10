@@ -1,9 +1,9 @@
 * {
     font-family: 'Roboto', sans-serif;
-    color:#333;
+    color: #333;
 }
 
-img{
+img {
     object-fit: cover;
     height: 300px;
     width: 300px;
@@ -18,7 +18,7 @@ body {
 body {
     font: 14px;
     background: #d1c7f1;
-    animation:bg-move 10s ease 2s infinite;
+    animation: bg-move 10s ease 2s infinite;
 }
 
 .error-message {
@@ -33,30 +33,36 @@ form {
     padding-bottom: 50px;
 }
 
-.upload{
-    color:tomato;
+.upload {
+    color: tomato;
     font-weight: bold;
     font-size: 42px;
 }
 
-span{
-    color:tomato;
-    font-size:32px;
+span {
+    color: tomato;
+    font-size: 32px;
 }
+
 
 /*ICONOS*/
-.fa-star{
-    color:rgb(241, 179, 43);
+
+.fa-star {
+    color: rgb(241, 179, 43);
 }
 
-.fa-upload{
-    color : #746AF6
+.fa-star-grey {
+    color: #96989A;
+}
+
+.fa-upload {
+    color: #746AF6
 }
 
 
 /* BUTTONS */
 
-.my-btn{
+.my-btn {
     border: none;
     border-radius: 30px;
     padding: 10px 15px;
@@ -67,8 +73,8 @@ span{
     transition: 0.2s all;
 }
 
-.my-btn:hover{
-    transform:scale(1.1);
+.my-btn:hover {
+    transform: scale(1.1);
 }
 
 .signup,
@@ -99,7 +105,7 @@ span{
 .navbar {
     padding: 10px 20px;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
@@ -147,7 +153,7 @@ span{
     text-align: center;
 }
 
-.main-text{
+.main-text {
     padding-top: 120px;
 }
 
@@ -184,8 +190,8 @@ span{
     padding-left: 15px;
 }
 
-@media (min-width:768px){
-    .main-text h3{
+@media (min-width:768px) {
+    .main-text h3 {
         width: 60%;
     }
 }
@@ -194,7 +200,7 @@ span{
 /* SIGN  UP & LOGIN FORMS */
 
 .main-text input,
-select{
+select {
     padding: 10px;
     width: 90%;
     border-radius: 30px;
@@ -208,7 +214,7 @@ select{
     margin: 10px auto;
     padding-left: 5px;
     width: 90%;
-    color: #96989A;
+    color: #616363;
     box-sizing: border-box;
 }
 
@@ -238,8 +244,6 @@ select{
     width: 80%;
     max-width: 500px;
 }
-
-
 
 .iconos {
     margin-bottom: 10px;
@@ -287,35 +291,39 @@ select{
     background-color: white !important;
 }
 
+
 /* PLACES */
-.card{
-    background-color:transparent;
-    margin-bottom:10px;
-    border:none;
+
+.card {
+    background-color: transparent;
+    margin-bottom: 10px;
+    border: none;
 }
 
-.card-title{
+.card-title {
     color: #746AF6;
 }
 
-.card-image{
+.card-image {
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
 }
 
-.card-image img:hover{
-    transform:scale(1.5);
+.card-image img:hover {
+    transform: scale(1.5);
     transition: 2s all
 }
 
-.detail{
+.detail {
     display: block;
 }
 
+
 /* PLACE DETAIL */
-.comments{
-    border:1px solid #eee;
+
+.comments {
+    border: 1px solid #eee;
     margin: 10px 0;
     padding: 30px;
     border-radius: 10px;
@@ -323,75 +331,86 @@ select{
     transition: 0.8s all;
 }
 
-.comments:hover{
-    transform:scale(1);
-    background:#fff;
+.comments:hover {
+    transform: scale(1);
+    background: #fff;
 }
 
-.add-comment{
-    margin-top:30px;
+.add-comment {
+    margin-top: 30px;
 }
 
-.toleft{
+.toleft {
     text-align: left;
 }
 
-.avg-box{
-    width:70%;
+.avg-box {
+    width: 70%;
     margin-top: 50px;
     background-color: #fff;
     padding: 10px;
-    border-radius:10px;
+    border-radius: 10px;
 }
 
-.avg-box p{
-    margin:0;
+.avg-box p {
+    margin: 0;
 }
 
-.comment-profile-img{
+.comment-profile-img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-.comment-img{
+.comment-img {
     height: 200px;
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
-@media (min-width:768px){
-    .about-comment{
+@media (min-width:768px) {
+    .about-comment {
         display: flex;
         width: 100%;
         justify-content: space-between;
-        margin-top:80px;
+        margin-top: 80px;
     }
-
-    .add-comment{
+    .add-comment {
         width: 50%;
-        margin-top:50px;
+        margin-top: 50px;
     }
-
-    .comments-list{
+    .comments-list {
         display: flex;
-        width:50%;
+        width: 50%;
         flex-wrap: wrap;
-        padding-top:60px;
+        padding-top: 60px;
     }
-
-    .comments{
-        margin:10px;
+    .comments {
+        margin: 10px;
     }
 }
 
+
 /*Background*/
-@keyframes bg-move{
-     0%{background: rgb(206, 185, 250);}
-     20%{background: #D8C5F9;}
-     40%{background: #b7aaf3;}
-     60%{background: rgb(211, 189, 230);}
-     80%{background: #DEDBEB;}
-     100%{background: #d3c7f7;}
+
+@keyframes bg-move {
+    0% {
+        background: rgb(206, 185, 250);
     }
+    20% {
+        background: #D8C5F9;
+    }
+    40% {
+        background: #b7aaf3;
+    }
+    60% {
+        background: rgb(211, 189, 230);
+    }
+    80% {
+        background: #DEDBEB;
+    }
+    100% {
+        background: #d3c7f7;
+    }
+}

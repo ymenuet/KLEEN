@@ -56,7 +56,7 @@ exports.createCommentProcess = async(req, res) => {
         avgService: newAvgs[3],
     })
 
-    res.redirect(`/places/${req.params.placeId}`, avg)
+    res.redirect(`/places/${req.params.placeId}`)
 }
 
 exports.editCommentView = async(req, res) => {
@@ -100,4 +100,3 @@ exports.deleteComment = async(req, res) => {
     await Comment.findByIdAndDelete(req.params.commentId);
     res.redirect("/");
 }
-

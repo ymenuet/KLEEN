@@ -39,6 +39,9 @@ span {
 .fa-star {
   color: #f1b32b; }
 
+.fa-star-grey {
+  color: #96989A; }
+
 .fa-upload {
   color: #746AF6; }
 
@@ -165,7 +168,7 @@ select {
   margin: 10px auto;
   padding-left: 5px;
   width: 90%;
-  color: #96989A;
+  color: #616363;
   box-sizing: border-box; }
 
 .custom-file-label {
