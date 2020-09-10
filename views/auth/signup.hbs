@@ -3,26 +3,26 @@
 
   <form action="/auth/signup" method="POST" id="form-container" enctype="multipart/form-data">
     <br>
-    <label for="email" class="required-label">Email (required):</label>
-    <input id="email" type="text" name="email" placeholder="Your email" required>
+    <label for="email-signup" class="required-label">Email (required):</label>
+    <input id="email-signup" type="email" name="email" placeholder="Your email" required>
     <br>
     <br>
-    <label for="username" class="required-label">Username (required):</label>
-    <input id="username" type="text" name="username" placeholder="Your username" required>
+    <label for="username-signup" class="required-label">Username (required):</label>
+    <input id="username-signup" type="text" name="username" placeholder="Your username" required maxlength="20">
     <br>
     <br>
-    <label for="password" class="required-label">Password (required):</label>
-    <input id="password" type="password" name="password" placeholder="Your password" required>
+    <label for="password-signup" class="required-label">Password (required):</label>
+    <input id="password-signup" type="password" name="password" placeholder="Your password" required>
     <br>
     <br>
-    <label class="profile-image" for="image">
+    <label class="profile-image" for="image-signup">
       Profile picture:
     </label>
     <div class="custom-file">
-      <label class="profile-image custom-file-label" for="image">
-        Your photo
+      <label class="profile-image custom-file-label" for="image-signup">
+        Your profile picture
       </label>
-      <input type="file" name="image" class="custom-file-input">
+      <input id="image-signup" type="file" name="image" class="custom-file-input" onchange="displayFileName()">
     </div>
     <br>
     <br>
@@ -39,6 +39,6 @@
   </div>
   <p class="account-message">
     Do you already have an account?
-    <a href="/auth/login">Login</a>
+    <a href="/auth/login" class="normal-link">Login</a>
   </p>
 </div>

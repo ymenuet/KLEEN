@@ -3,7 +3,7 @@
   <p class="error-message">{{error}}</p>
   <form action="/places/new" method="POST" enctype="multipart/form-data">
     <label for="place-name" class="required-label">Name of the place (required):</label>
-    <input type="text" name="name" required id="place-name" value="{{name}}">
+    <input type="text" name="name" required id="place-name" value="{{name}}" maxlength="100">
 
     <label for="place-category" class="required-label">Category (required):</label>
     <select name="category" id="place-category" required onchange="checkOther()">
@@ -26,11 +26,11 @@
 
     <div class="other-category-fields" style="display: none;">
       <label for="other-category">If other category, please specify:</label>
-      <input type="text" id="other-category" name="otherCategory" value="{{otherCategory}}">
+      <input type="text" id="other-category" name="otherCategory" value="{{otherCategory}}" maxlength="20">
     </div>
 
     <label for="place-description">Description:</label>
-    <input type="text" name="description" id="place-description" value="{{description}}">
+    <input type="text" name="description" id="place-description" value="{{description}}" maxlength="500">
 
     <label for="location" class="required-label">Location (required):</label>
     <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>

@@ -1,41 +1,41 @@
 <div class="main-text">
-    <h2>Edit your comment</h2>
-    <form action="/comment/editComment/{{_id}}" method="POST" id="form-container" enctype="multipart/form-data">
+  <h2>Edit your comment</h2>
+  <form action="/comment/editComment/{{_id}}" method="POST" id="form-container" enctype="multipart/form-data">
 
-        <label for="content">Description:</label>
-        <input type="text" name="content">
-        <br>
-        <br>
-        <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>
+    <label for="content-comment">Description:</label>
+    <input type="text" name="content" id="content-comment" maxlength="500" value="{{content}}">
+    <br>
+    <br>
+    <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>
 
-        <label for="scoreMasks" class="required-label">Facemask policy: how would you rate theirs? (required)</label>
-        <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required>
-        <br>
+    <label for="scoreMasks" class="required-label">Facemask policy: how would you rate theirs? (required)</label>
+    <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required value="{{scoreMasks}}">
+    <br>
 
-        <label for="scoreGel" class="required-label">Gel and soap: do they provide enough? (required)</label>
-        <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required>
-        <br>
+    <label for="scoreGel" class="required-label">Gel and soap: do they provide enough? (required)</label>
+    <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required value="{{scoreGel}}">
+    <br>
 
-        <label for="scoreClean" class="required-label">Cleanliness: how would you rate the overall cleanliness of the
-          place and the sanitary measures taken there? (required)</label>
-        <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required>
-        <br>
+    <label for="scoreClean" class="required-label">Cleanliness: how would you rate the overall cleanliness of the
+      place and the sanitary measures taken there? (required)</label>
+    <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required value="{{scoreClean}}">
+    <br>
 
-        <label for="scoreService" class="required-label">Service: were you satisfied with the service you were provided?
-          (required)</label>
-        <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
-        <br>
-        <br>
+    <label for="scoreService" class="required-label">Service: were you satisfied with the service you were provided?
+      (required)</label>
+    <input type="number" min="0" max="5" name="scoreService" placeholder="0" required value="{{scoreService}}">
+    <br>
+    <br>
 
-        <label for="image">Upload an image if you want:</label>
-        <div class="custom-file">
-          <label class="profile-image custom-file-label " for="image">
-            Image of the place
-          </label>
-          <input type="file" name="image" class="custom-file-input">
-        </div>
+    <label for="image">Upload an image if you want:</label>
+    <div class="custom-file">
+      <label class="profile-image custom-file-label " for="image">
+        Image of the place
+      </label>
+      <input type="file" name="image" class="custom-file-input">
+    </div>
 
-        <button type="submit" class="submitbtn my-btn">Edit comment</button>
-    </form>
+    <button type="submit" class="submitbtn my-btn">Edit comment</button>
+  </form>
 
 </div>

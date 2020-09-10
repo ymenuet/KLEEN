@@ -1,121 +1,144 @@
-<div class="main-text">
-  {{#if errorComment}}
-  <p class="error-message">{{errorComment}}</p>
-  {{/if}}
-  <h2 class="card-title">{{place.name}}</h2>
-  <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
-
-  {{#if userCheck}}
-  <a class="signup my-btn" href="/places/edit/{{place._id}}">Edit place</a>
-
-<button type="button" class="my-btn login" data-toggle="modal" data-target="#delete-modal">
-  Delete place
-</button>
-
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete "{{place.name}}"</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete "{{place.name}}" ?
-      </div>
-        <a class="my-btn submitbtn" href="/places/delete/{{place._id}}">Yes, delete</a>
-        <button type="button" class="my-btn login" data-dismiss="modal">Cancel</button>
-    </div>
-  </div>
 </div>
-
-  {{/if}}
-
-  <div class="avg-box">
-    <h5>Average Score: <span>{{place.averageScore}}</span> (total of {{place.contributions}} comments)</h5>
-    <hr>
-    <h6>Facemask policy score: {{place.avgMasks}}</h6>
-    <h6>Gel and Soap score: {{place.avgGel}}</h6>
-    <h6>Cleanliness score: {{place.avgClean}}</h6>
-    <h6>Service score: {{place.avgService}}</h6>
-  </div>
-
-
-  <div class="about-comment">
-    <div class="add-comment">
-      <h4>Post a new comment</h4>
-
-      <form action="/comment/newComment/{{place._id}}" method="POST" id="form-container" enctype="multipart/form-data">
-
-
-        <label for="content">Description:</label>
-        <input type="text" name="content">
+<div><img class="image-detail img-fluid" src="{{place.image}}" alt="{{place.name}}"></div>
+<div class="container">
+  <div class="main-text place-detail">
+    {{#if errorComment}}
+    <p class="error-message">{{errorComment}}</p>
+    {{/if}}
+    <h1 class="place-detail-title">{{place.name}}</h1>
+    <br>
+    <div class="avg-box">
+      <h5>Average Score: <span>{{place.averageScore}}</span> (total of {{place.contributions}} comments)</h5>
+      <hr>
+      <h6>Facemask policy score: {{place.avgMasks}}</h6>
+      <h6>Gel and Soap score: {{place.avgGel}}</h6>
+      <h6>Cleanliness score: {{place.avgClean}}</h6>
+      <h6>Service score: {{place.avgService}}</h6>
+    </div>
+    <div class="row w-100 detail-info">
+      <div class="col-12 col-md-6 place-info">
+        {{#unless place.otherCategory}}
+        <h3>{{place.category}} name: "{{place.name}}"</h3>
+        {{else}}
+        <h3>{{place.otherCategory}} name: "{{place.name}}"</h3>
+        {{/unless}}
+        <h5>{{place.description}}</h5>
         <br>
-        <br>
-        <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>
+        <p>This place scores a total average of {{place.averageScore}}/5 out of {{place.contributions}} comments. Their
+          facemask
+          policy rates {{place.avgMasks}}/5. The customer satisfaction rate about the gel and soap available is
+          {{place.avgGel}}/5. The general cleanliness of the place and their sanitizing policy rates
+          {{place.avgClean}}/5 and the service in general {{place.avgService}}/5.</p>
+      </div>
+      <div class="col-12 col-md-6" id="map" style="height: 400px; margin:40px auto 0 auto; border-radius: 10px"></div>
+    </div>
 
-        <label for="scoreMasks" class="required-label">Facemask policy: how would you rate theirs? (required)</label>
-        <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required>
-        <br>
+    {{#if userCheck}}
+    <a class="signup my-btn" href="/places/edit/{{place._id}}">Edit place</a>
 
-        <label for="scoreGel" class="required-label">Gel and soap: do they provide enough? (required)</label>
-        <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required>
-        <br>
+    <button type="button" class="my-btn login" data-toggle="modal" data-target="#delete-modal">
+      Delete place
+    </button>
 
-        <label for="scoreClean" class="required-label">Cleanliness: how would you rate the overall cleanliness of the
-          place and the sanitary measures taken there? (required)</label>
-        <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required>
-        <br>
-
-        <label for="scoreService" class="required-label">Service: were you satisfied with the service you were provided?
-          (required)</label>
-        <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
-        <br>
-        <br>
-
-        <label for="image">Upload an image if you want:</label>
-        <div class="custom-file">
-          <label class="profile-image custom-file-label " for="image">
-            Add a picture from the place
-          </label>
-          <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete "{{place.name}}"</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete "{{place.name}}" ?
+          </div>
+          <a class="my-btn submitbtn" href="/places/delete/{{place._id}}">Yes, delete</a>
+          <button type="button" class="my-btn login" data-dismiss="modal">Cancel</button>
         </div>
-
-        <button type="submit" class="submitbtn my-btn">Post comment</button>
-      </form>
+      </div>
     </div>
 
-    <div class='comments-list'>
-      {{#each place.comments}}
-      <div class="comments">
-        <h5><img class="comment-profile-img" src="{{author.image}}" alt="image"> Commented by {{author.username}}</h5>
-        <p>{{createdAt}}</p>
-        <ul class="toleft">
-          <li>General average: {{avgScore}}<i class="fas fa-star"></i></li>
-          <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
-          <li>Antibacterial gel available: {{scoreGel}}<i class="fas fa-star"></i></li>
-          <li>Cleanliness of the place: {{scoreClean}}<i class="fas fa-star"></i></li>
-          <li>Quality of service in general: {{scoreService}}<i class="fas fa-star"></i></li>
-        </ul>
-        {{#if image}}
-        <img class="comment-img" src="{{image}}" alt="Image">
-        {{/if}}
-        <p class="toleft">{{content}}</p>
+    {{/if}}
+
+
+
+    <div class="about-comment">
+      <div class="add-comment">
+        <h4>Post a new comment</h4>
+
+        <form action="/comment/newComment/{{place._id}}" method="POST" id="form-container"
+          enctype="multipart/form-data">
+
+
+          <label for="content-comment">Description:</label>
+          <input type="text" name="content" id="content-comment" maxlength="500">
+          <br>
+          <br>
+          <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>
+
+          <label for="scoreMasks" class="required-label">Facemask policy: how would you rate theirs? (required)</label>
+          <input type="number" min="0" max="5" name="scoreMasks" placeholder="0" required>
+          <br>
+
+          <label for="scoreGel" class="required-label">Gel and soap: do they provide enough? (required)</label>
+          <input type="number" min="0" max="5" name="scoreGel" placeholder="0" required>
+          <br>
+
+          <label for="scoreClean" class="required-label">Cleanliness: how would you rate the overall cleanliness of the
+            place and the sanitary measures taken there? (required)</label>
+          <input type="number" min="0" max="5" name="scoreClean" placeholder="0" required>
+          <br>
+
+          <label for="scoreService" class="required-label">Service: were you satisfied with the service you were
+            provided?
+            (required)</label>
+          <input type="number" min="0" max="5" name="scoreService" placeholder="0" required>
+          <br>
+          <br>
+
+          <label for="image">Upload an image if you want:</label>
+          <div class="custom-file">
+            <label class="profile-image custom-file-label " for="image">
+              Add a picture from the place
+            </label>
+            <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
+          </div>
+
+          <button type="submit" class="submitbtn my-btn">Post comment</button>
+        </form>
       </div>
-      {{/each}}
+
+      <div class='comments-list'>
+        {{#each place.comments}}
+        <div class="comments">
+          <h5><img class="comment-profile-img" src="{{author.image}}" alt="image"> Commented by {{author.username}}</h5>
+          <p>{{createdAt}}</p>
+          <ul class="toleft">
+            <li>General average: {{avgScore}}<i class="fas fa-star"></i></li>
+            <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
+            <li>Antibacterial gel available: {{scoreGel}}<i class="fas fa-star"></i></li>
+            <li>Cleanliness of the place: {{scoreClean}}<i class="fas fa-star"></i></li>
+            <li>Quality of service in general: {{scoreService}}<i class="fas fa-star"></i></li>
+          </ul>
+          {{#if image}}
+          <img class="comment-img" src="{{image}}" alt="Image">
+          {{/if}}
+          <p class="toleft">{{content}}</p>
+        </div>
+        {{/each}}
+      </div>
     </div>
   </div>
-</div>
 
 
-<script>
-  window.onload = () => {
-    let marker = new mapboxgl.Marker()
-      .setLngLat([{{ place.location.coordinates }}])
+  <script>
+    window.onload = () => {
+      let marker = new mapboxgl.Marker()
+        .setLngLat([{{ place.location.coordinates }}])
       .addTo(map);
-  map.flyTo({
-    center: [{{ place.location.coordinates }}]
+    map.flyTo({
+      center: [{{ place.location.coordinates }}]
     })
   }
-</script>
+  </script>
