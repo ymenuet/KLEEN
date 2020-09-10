@@ -39,11 +39,6 @@ form {
     font-size: 42px;
 }
 
-span {
-    color: tomato;
-    font-size: 32px;
-}
-
 button {
     outline: none!important;
 }
@@ -286,6 +281,14 @@ select {
     background-color: #746AF6;
 }
 
+.comment,
+.my-place {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
 
 /* NEW PLACE */
 
@@ -392,13 +395,18 @@ select {
     border-radius: 10px;
 }
 
+.avg-box span {
+    color: tomato;
+    font-size: 32px;
+}
+
 .avg-box p {
     margin: 0;
 }
 
 .comment-profile-img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
 }

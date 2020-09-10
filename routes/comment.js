@@ -19,9 +19,10 @@ router.post("/newComment/:placeId", ensureLogin, upload.single('image'), createC
 
 //for edit comment
 router.get("/editComment/:commentId", ensureLogin, checkAuthorComment, editCommentView)
-router.post("/editComment/:commentId", ensureLogin, checkAuthorComment, editCommentProcess);
+router.post("/editComment/:commentId", upload.single('image'),editCommentProcess)
+
 
 //for delete comment
-router.post("/delete/:commentId", ensureLogin, checkAuthorComment, deleteComment);
+router.post("/:commentId", ensureLogin, checkAuthorComment, deleteComment);
 
 module.exports = router;
