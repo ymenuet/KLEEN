@@ -29,6 +29,7 @@ const placeSchema = new Schema({
         },
         coordinates: [Number],
     },
+    address: String,
     comments: [{
         type: Schema.Types.ObjectId,
         ref: "Comment"

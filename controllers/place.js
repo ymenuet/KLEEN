@@ -1,4 +1,5 @@
 const Place = require('../models/Place')
+const { default: Axios } = require('axios')
 
 exports.newPlaceView = (req, res) => {
     res.render('place/newPlace')
@@ -28,6 +29,15 @@ exports.newPlaceProcess = async(req, res) => {
     let image;
     if (req.file) image = req.file.path;
 
+    const {
+        data: {
+            features: [
+                myPlace
+            ]
+        }
+    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${process.env.MAPBOX_TOKEN}`)
+
+    const address = myPlace.place_name
 
     const newPlace = await Place.create({
         name,
@@ -35,6 +45,7 @@ exports.newPlaceProcess = async(req, res) => {
         otherCategory,
         description,
         image,
+        address,
         location: {
             type: 'Point',
             coordinates: [lng, lat],
@@ -178,12 +189,23 @@ exports.editPlaceProcess = async(req, res) => {
 
     if (category !== "Other") otherCategory = null
 
+    const {
+        data: {
+            features: [
+                myPlace
+            ]
+        }
+    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${process.env.MAPBOX_TOKEN}`)
+
+    const address = myPlace.place_name
+
     const updatedPlace = await Place.findByIdAndUpdate(req.params.placeId, {
         name,
         category,
         otherCategory,
         description,
         image,
+        address,
         location: {
             type: 'Point',
             coordinates: [lng, lat],
