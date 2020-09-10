@@ -1,10 +1,14 @@
 const User = require("../models/User")
 const Comment = require("../models/Comment")
+const Place = require("../models/Place")
 
 exports.viewProfile = async (req, res) => {
     const user = req.user
-    const comments = await Comment.find({author : req.user._id})
-    res.render("profile/profile", {user, comments})
+    const comments = await Comment.find({author : req.user._id}).populate("place")
+
+    const places = await Place.find({creator : req.user._id})
+
+    res.render("profile/profile", {user, comments, places})
 }
 
 exports.editProfileView = (req, res) => {

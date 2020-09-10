@@ -9,19 +9,49 @@
   <a href="/places/new" class="my-btn login">Add a new place</a>
 
   <div class="my-posts">
-    <div class="my-post">
-
+    <div class="my-places">
+        {{#each places}}
+          <div class="my-place">
+            <h4>{{name}}</h4>
+            <h6>{{category}}</h6>
+            <h6>{{description}}</h6>
+            <h6>{{avgMasks}}</h6>
+            <h6>{{avgGel}}</h6>
+            <h6>{{avgClean}}</h6>
+            <h6>{{avgService}}</h6>
+            <img src="{{image}}" alt="Image">
+            <p class="my-btn  submitbtn">
+            <a href="/places/edit/{{_id}}">Edit your place</a>  
+            </p>
+            <form action="/places/delete/{{_id}}" method="GET">
+            <button class="my-btn login">Delete</button>
+            </form>
+          </div>
+        {{/each}}
     </div>
     <div class="my-comments">
-      <div class="comment">
         {{#each comments}}
-        <h2>{{author.username}}</h2>
-        <p>{{content}}</p>
-        {{#if image}}
-        <img src="{{image}}" alt="Comment image">
-        {{/if}}
+          <div class="comment">
+          <h4>{{place.name}}</h4>
+          <hr>
+          <h6>{{content}}</h6>
+          <h6>Facemask policy score: {{scoreMasks}}</h6>
+          <h6>Gel and Soap score: {{scoreGel}}</h6>
+          <h6>Cleanliness score: {{scoreClean}}</h6>
+          <h6>Service score: {{scoreService}}</h6>
+          {{#if image}}
+          <img class="comment-img" src="{{image}}" alt="Comment image">
+          {{/if}}
+          <br>
+          <p class="my-btn  submitbtn">
+          <a href="/comment/editComment/{{_id}}">Edit your comment</a>  
+          </p>
+          <form action="/comment/{{_id}}" method="POST">
+          <button class="my-btn login">Delete</button>
+          </form>
+          <br>
+          </div>
         {{/each}}
-      </div>
     </div>
   </div>
 </div>

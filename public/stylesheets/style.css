@@ -31,9 +31,10 @@ form {
   font-weight: bold;
   font-size: 42px; }
 
-span {
-  color: tomato;
-  font-size: 32px; }
+a,
+a:hover {
+  text-decoration: none;
+  color: white; }
 
 /*ICONOS*/
 .fa-star {
@@ -165,7 +166,7 @@ select {
   margin: 10px auto;
   padding-left: 5px;
   width: 90%;
-  color: #96989A;
+  color: #333;
   box-sizing: border-box; }
 
 .custom-file-label {
@@ -213,6 +214,13 @@ select {
 .edit-post,
 .delete-post {
   background-color: #746AF6; }
+
+.comment,
+.my-place {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px; }
 
 /* NEW PLACE */
 .required-label {
@@ -269,6 +277,10 @@ select {
   background-color: #fff;
   padding: 10px;
   border-radius: 10px; }
+
+.avg-box span {
+  color: tomato;
+  font-size: 32px; }
 
 .avg-box p {
   margin: 0; }

@@ -68,9 +68,8 @@ exports.editCommentView = async(req, res) => {
 }
 
 exports.editCommentProcess = async(req, res) => {
-    const {
-        commentId
-    } = req.params;
+    const {commentId} = req.params;
+    const comment = await Comment.findById(commentId)
     const {
         content,
         scoreMasks,
@@ -78,14 +77,13 @@ exports.editCommentProcess = async(req, res) => {
         scoreClean,
         scoreService
     } = req.body;
-    const {
-        path
-    } = req.file;
 
-    await Comment.findByIdAndUpdate(commentId, {
-        author: req.user,
-        place: req.place,
-        image: path,
+    let image = comment.image;
+    if (req.file) image = req.file.path;
+    
+    const modified = await Comment.findByIdAndUpdate(commentId, {
+        author: req.user._id,
+        image,
         content,
         scoreMasks,
         scoreGel,
@@ -93,11 +91,12 @@ exports.editCommentProcess = async(req, res) => {
         scoreService,
     })
 
-    res.redirect("place/placeDetail")
+    res.redirect("/profile")
 }
+
 
 exports.deleteComment = async(req, res) => {
     await Comment.findByIdAndDelete(req.params.commentId);
-    res.redirect("/");
+    res.redirect("/profile");
 }
 
