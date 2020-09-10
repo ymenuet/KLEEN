@@ -27,9 +27,12 @@
           <div class="modal-body">
             <label>Apply filters on your search to only see the places that meet your requirements!</label>
             <br>
-            <label for="search-category">Category</label>
+            <label for="search-location">Location:</label>
+            <input type="text" id="search-location" name="address">
+
+            <label for="search-category">Type of place:</label>
             <select name="category" id="search-category">
-              <option value="" disabled selected>Select a category:</option>
+              <option value="" disabled selected hidden>Select a category:</option>
               <option value="Bar">Bar</option>
               <option value="Cinema">Cinema</option>
               <option value="Gym">Gym</option>

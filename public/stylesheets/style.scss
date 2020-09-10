@@ -40,7 +40,7 @@ form {
 }
 
 button {
-    outline: none!important;
+    outline: none !important;
 }
 
 a,
@@ -266,6 +266,14 @@ select {
     margin-left: 5px;
 }
 
+.normal-link {
+    color: #016dd3 !important;
+}
+
+.normal-link:hover {
+    text-decoration: underline !important;
+}
+
 
 /* PROFILE */
 
@@ -355,7 +363,7 @@ select {
 }
 
 .card-body {
-    justify-content: space-between!important;
+    justify-content: space-between !important;
 }
 
 .detail {
@@ -372,11 +380,7 @@ select {
     border-radius: 10px;
     overflow: hidden;
     transition: 0.8s all;
-}
-
-.comments:hover {
-    transform: scale(1);
-    background: #fff;
+    background-color: white;
 }
 
 .add-comment {

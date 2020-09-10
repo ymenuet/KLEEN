@@ -8,27 +8,28 @@
   {{#if userCheck}}
   <a class="signup my-btn" href="/places/edit/{{place._id}}">Edit place</a>
 
-<button type="button" class="my-btn login" data-toggle="modal" data-target="#delete-modal">
-  Delete place
-</button>
+  <button type="button" class="my-btn login" data-toggle="modal" data-target="#delete-modal">
+    Delete place
+  </button>
 
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete "{{place.name}}"</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete "{{place.name}}" ?
-      </div>
+  <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete "{{place.name}}"</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete "{{place.name}}" ?
+        </div>
         <a class="my-btn submitbtn" href="/places/delete/{{place._id}}">Yes, delete</a>
         <button type="button" class="my-btn login" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
   {{/if}}
 
@@ -49,8 +50,8 @@
       <form action="/comment/newComment/{{place._id}}" method="POST" id="form-container" enctype="multipart/form-data">
 
 
-        <label for="content">Description:</label>
-        <input type="text" name="content">
+        <label for="content-comment">Description:</label>
+        <input type="text" name="content" id="content-comment" maxlength="500">
         <br>
         <br>
         <label>For every scale below, 0 means "not satisfied" and 5 "very satisfied":</label>

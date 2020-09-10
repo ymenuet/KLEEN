@@ -1,5 +1,7 @@
 const Place = require('../models/Place')
-const { default: Axios } = require('axios')
+const {
+    default: Axios
+} = require('axios')
 
 exports.newPlaceView = (req, res) => {
     res.render('place/newPlace')
@@ -90,6 +92,12 @@ exports.searchPlaces = async(req, res) => {
                     $regex: regex,
                     $options: 'i'
                 }
+            },
+            {
+                address: {
+                    $regex: regex,
+                    $options: 'i'
+                }
             }
         ]
     })
@@ -101,6 +109,7 @@ exports.searchPlaces = async(req, res) => {
 
 exports.advancedSearchPlaces = async(req, res) => {
     const {
+        address,
         category,
         averageScore,
         avgMasks,
@@ -108,8 +117,19 @@ exports.advancedSearchPlaces = async(req, res) => {
         avgClean,
         avgService
     } = req.query;
+
+    const categoryRegex = category ? category : '[\s\S]*';
+    const addressRegex = address ? address.split(' ').join('|') : '[\s\S]*';
+
     const places = await Place.find({
-        category,
+        category: {
+            $regex: categoryRegex,
+            $options: 'i'
+        },
+        address: {
+            $regex: addressRegex,
+            $options: 'i'
+        },
         averageScore: {
             $gte: averageScore
         },
