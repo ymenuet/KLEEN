@@ -1,4 +1,8 @@
 # KLEEN
 Ironhack project #2
 
-Deployed website: https://lit-headland-22720.herokuapp.com/
+Deployed website: https://kleen-app.herokuapp.com/
+
+Test user:
+- email: test-user@test.com
+- password: 123tester
