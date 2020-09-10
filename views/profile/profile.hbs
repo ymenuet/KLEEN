@@ -1,57 +1,87 @@
 <div class="main-text">
+  <h2>Welcome {{user.username}}</h2>
+  <a href="/profile/editProfile" class="my-btn submitbtn">Edit your profile</a>
+  <a href="/places/new" class="my-btn login">Add a new place</a>
+
   <div class="user-info">
-    <h2>Welcome {{user.username}}</h2>
     <img src="{{user.image}}" alt="{{user.username}}">
   </div>
 
   <br>
-  <a href="/profile/editProfile" class="my-btn submitbtn">Edit your profile</a>
-  <a href="/places/new" class="my-btn login">Add a new place</a>
+
+  <button id="show-places" class="my-btn submitbtn">See my places</button>
+
+  <button id="show-comments" class="my-btn login">See my comments</button>
 
   <div class="my-posts">
-    <div class="my-places">
-        {{#each places}}
-          <div class="my-place">
-            <h4>{{name}}</h4>
-            <h6>{{category}}</h6>
-            <h6>{{description}}</h6>
-            <h6>{{avgMasks}}</h6>
-            <h6>{{avgGel}}</h6>
-            <h6>{{avgClean}}</h6>
-            <h6>{{avgService}}</h6>
-            <img src="{{image}}" alt="Image">
-            <p class="my-btn  submitbtn">
-            <a href="/places/edit/{{_id}}">Edit your place</a>  
-            </p>
-            <form action="/places/delete/{{_id}}" method="GET">
-            <button class="my-btn login">Delete</button>
-            </form>
+    <div class="my-places row invisible">
+      {{#each places}}
+      <div class="my-place card col-12 col-md-6 col-lg-4">
+        <div class="card-image">
+          <img src="{{image}}" alt="Image">
+        </div>
+        <br>
+        <h4>{{name}}</h4>
+        <hr>
+        <h6>{{category}}</h6>
+        <h6>{{description}}</h6>
+        <div class="iconos">
+          <a href="/places/edit/{{_id}}"><i class="fas fa-edit fa-2x"></i></a>
+          <button class="trash-btn" data-toggle="modal" data-target="#delete-modal-profile"><i
+              class="fas fa-trash-alt fa-2x"></i></button>
+
+          <div class="modal fade" id="delete-modal-profile" tabindex="-1" role="dialog"
+            aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Delete "{{name}}"</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to delete "{{name}}" ?
+                </div>
+                <a class="my-btn submitbtn" href="/places/delete/{{_id}}">Yes, delete</a>
+                <button type="button" class="my-btn login" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
           </div>
-        {{/each}}
+
+
+        </div>
+      </div>
+      {{/each}}
     </div>
-    <div class="my-comments">
-        {{#each comments}}
-          <div class="comment">
-          <h4>{{place.name}}</h4>
-          <hr>
-          <h6>{{content}}</h6>
-          <h6>Facemask policy score: {{scoreMasks}}</h6>
-          <h6>Gel and Soap score: {{scoreGel}}</h6>
-          <h6>Cleanliness score: {{scoreClean}}</h6>
-          <h6>Service score: {{scoreService}}</h6>
-          {{#if image}}
+    <div class="my-comments row invisible">
+      {{#each comments}}
+      <div class="comment my-comments my-place card col-12 col-md-6 col-lg-4">
+        {{#if image}}
+        <div class="card-image">
           <img class="comment-img" src="{{image}}" alt="Comment image">
-          {{/if}}
-          <br>
-          <p class="my-btn  submitbtn">
-          <a href="/comment/editComment/{{_id}}">Edit your comment</a>  
-          </p>
-          <form action="/comment/{{_id}}" method="POST">
-          <button class="my-btn login">Delete</button>
+        </div>
+        {{/if}}
+        <br>
+        <h4>{{place.name}}</h4>
+        <hr>
+        <h6>{{content}}</h6>
+        <h6>Facemask policy score: {{scoreMasks}}</h6>
+        <h6>Gel and Soap score: {{scoreGel}}</h6>
+        <h6>Cleanliness score: {{scoreClean}}</h6>
+        <h6>Service score: {{scoreService}}</h6>
+        <br>
+        <div class="iconos">
+          <a href="/comment/editComment/{{_id}}"><i class="fas fa-edit fa-2x"></i></a>
+          <form class="deleteform" action="/comment/{{_id}}" method="POST">
+            <button class="trash-btn"><i class="fas fa-trash-alt fa-2x"></i></button>
           </form>
-          <br>
-          </div>
-        {{/each}}
+        </div>
+        <br>
+      </div>
+      {{/each}}
     </div>
   </div>
 </div>
+
+<script src="/javascripts/profileView.js"></script>
