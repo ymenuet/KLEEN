@@ -295,9 +295,28 @@ select {
 /* PLACES */
 
 .card {
-    background-color: transparent;
-    margin-bottom: 10px;
+    background-color: white;
+    margin: 20px 2%;
+    max-width: 29%;
     border: none;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 9px 10px 26px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width:991px) {
+    .card {
+        margin: 20px 2%;
+        max-width: 46%;
+    }
+}
+
+@media (max-width:767px) {
+    .card {
+        margin: 20px 4%;
+        max-width: 92%;
+    }
 }
 
 .card-title {
@@ -306,13 +325,24 @@ select {
 
 .card-image {
     width: 100%;
+    height: 300px;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s all
 }
 
 .card-image img:hover {
-    transform: scale(1.5);
-    transition: 2s all
+    transform: scale(1.2);
+}
+
+.card-body {
+    justify-content: space-between!important;
 }
 
 .detail {
@@ -396,7 +426,7 @@ select {
 
 @keyframes bg-move {
     0% {
-        background: rgb(206, 185, 250);
+        background: #d3c7f7;
     }
     20% {
         background: #D8C5F9;
