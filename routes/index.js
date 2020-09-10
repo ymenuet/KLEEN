@@ -23,5 +23,10 @@ router.get("/profile", ensureLogin, viewProfile)
 router.get("/profile/editProfile", ensureLogin, editProfileView)
 router.post("/profile/editProfile", ensureLogin, upload.single('image'), editProfileProcess)
 
+/* Privacy page */
+router.get('/privacy', (req, res) => {
+    res.render('privacy')
+})
+
 
 module.exports = router;
