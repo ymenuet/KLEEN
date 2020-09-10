@@ -14,8 +14,20 @@ exports.newPlaceProcess = async(req, res) => {
         lat
     } = req.body
 
+    if (name === '' || category === 'Select a category:' || lng === '' || lat === '') return res.render('place/newPlace', {
+        name,
+        category,
+        otherCategory,
+        description,
+        lng,
+        lat,
+        error: "*Please fill in all the required fields",
+        errorImage: "Due to the missing fields error, you have to upload your image again if you want to add one"
+    })
+
     let image;
     if (req.file) image = req.file.path;
+
 
     const newPlace = await Place.create({
         name,
@@ -45,11 +57,32 @@ exports.searchPlaces = async(req, res) => {
         name
     } = req.query;
 
-    let nameArr = [];
-    if (name) nameArr = name.split(' ')
+    if (!name) return res.redirect('/places')
+
+    const regex = name.split(' ').join('|');
+
     const places = await Place.find({
-        name: RegExp(`/${name}|${nameArr[0]}|${nameArr[1]}|${nameArr[2]}|${nameArr[3]}|${nameArr[4]}/`)
+        $or: [{
+                name: {
+                    $regex: regex,
+                    $options: 'i'
+                }
+            },
+            {
+                category: {
+                    $regex: regex,
+                    $options: 'i'
+                }
+            },
+            {
+                otherCategory: {
+                    $regex: regex,
+                    $options: 'i'
+                }
+            }
+        ]
     })
+
     res.render('place/places', {
         places
     })
@@ -69,20 +102,18 @@ exports.advancedSearchPlaces = async(req, res) => {
         averageScore: {
             $gte: averageScore
         },
-        // avgMasks: {
-        //     avg: {
-        //         $gte: avgMasks
-        //     }
-        // },
-        // avgGel: {
-        //     $gte: avgGel
-        // },
-        // avgClean: {
-        //     $gte: avgClean
-        // },
-        // avgService: {
-        //     $gte: avgService
-        // }
+        avgMasks: {
+            $gte: avgMasks
+        },
+        avgGel: {
+            $gte: avgGel
+        },
+        avgClean: {
+            $gte: avgClean
+        },
+        avgService: {
+            $gte: avgService
+        }
     })
 
     res.render('place/places', {
@@ -91,29 +122,41 @@ exports.advancedSearchPlaces = async(req, res) => {
 }
 
 exports.viewPlace = async(req, res) => {
-    const place = await Place.findById(req.params.placeId).populate({
-        path: 'comments',
-        model: 'Comment',
-        populate: {
-            path: 'author',
-            model: 'User'
-        }
-    });
+    const place = await Place.findById(req.params.placeId)
+        .populate({
+            path: 'comments',
+            model: 'Comment',
+            options: {
+                sort: {
+                    createdAt: -1
+                }
+            },
+            populate: {
+                path: 'author',
+                model: 'User'
+            }
+        });
+    const {
+        errorComment
+    } = req.query;
     let userCheck = false;
     if (`${place.creator}` === `${req.user._id}`) userCheck = true
     res.render('place/placeDetails', {
         place,
-        userCheck
+        userCheck,
+        errorComment,
     })
 }
 
 exports.editPlaceView = async(req, res) => {
     const place = await Place.findById(req.params.placeId);
-    res.render('place/editPlace', place)
+    res.render('place/editPlace', {
+        place
+    })
 }
 
 exports.editPlaceProcess = async(req, res) => {
-    const {
+    let {
         name,
         category,
         otherCategory,
@@ -122,10 +165,18 @@ exports.editPlaceProcess = async(req, res) => {
         lat
     } = req.body
 
-    const currentPlace = await Place.findById(req.params.placeId)
+    const place = await Place.findById(req.params.placeId)
 
-    let image = currentPlace.image;
+    if (name === '' || lng === '' || lat === '') return res.render('place/editPlace', {
+        place,
+        error: "*Please fill in all the required fields",
+        errorImage: "*Due to the missing fields error, you have to upload your image again if you want to update the current one"
+    })
+
+    let image = place.image;
     if (req.file) image = req.file.path;
+
+    if (category !== "Other") otherCategory = null
 
     const updatedPlace = await Place.findByIdAndUpdate(req.params.placeId, {
         name,

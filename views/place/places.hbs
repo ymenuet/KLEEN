@@ -1,25 +1,64 @@
 <div class="main-text">
   {{#unless places}}
   <h1>You tried and couldn't find the place you are looking for?</h1>
-  <a href="/places/new" class="my-btn">Add a new place here</a>
+  <br>
+  <br>
+  <a href="/places/new" class="my-btn login">Add a new place here</a>
   {{else}}
   <div class="row">
     {{#each places}}
     <div class="card col-12 col-md-6 col-lg-4">
       <div class="card-image">
+        <a href="/places/{{_id}}">
         <img src="{{image}}" alt="{{name}}" class="card-img-top">
+        </a>
       </div>
       <div class="card-body">
+        <div>
         <h5 class="card-title">{{name}}</h5>
+        <p id="star-row-{{_id}}"></p>
         {{#unless otherCategory}}
         <h6 class="card-title">{{category}}</h6>
         {{else}}
         <h6 class="card-title">{{otherCategory}}</h6>
         {{/unless}}
         <p class="card-text">{{description}}</p>
+        </div>
         <a href="/places/{{_id}}" class="my-btn submitbtn detail">See details</a>
       </div>
     </div>
+    <script>
+      const $starRow{{ _id }} = document.querySelector('#star-row-{{_id}}')
+      function drawStars(yellowNum) {
+        for (let i = 0; i < yellowNum; i++) {
+          $starRow{{ _id }}.innerHTML += '<i class="fas fa-star"></i>'
+        }
+        for (let i = 0; i < 5 - yellowNum; i++) {
+          $starRow{{ _id }}.innerHTML += '<i class="fas fa-star fa-star-grey"></i>'
+        }
+        $starRow{{ _id }}.innerHTML += ' ({{contributions}})'
+      }
+      switch (Math.round({{ averageScore }})) {
+        case 0:
+          drawStars(0)
+          break;
+        case 1:
+          drawStars(1)
+          break;
+        case 2:
+          drawStars(2)
+          break;
+        case 3:
+          drawStars(3)
+          break;
+        case 4:
+          drawStars(4)
+          break;
+        case 5:
+          drawStars(5)
+          break;
+      }
+    </script>
     {{/each}}
   </div>
   {{/unless}}

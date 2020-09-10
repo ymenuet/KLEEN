@@ -1,13 +1,19 @@
 <div class="main-text">
   <h2>Add a new place</h2>
+  <p class="error-message">{{error}}</p>
   <form action="/places/new" method="POST" enctype="multipart/form-data">
     <label for="place-name" class="required-label">Name of the place (required):</label>
-    <input type="text" name="name" required id="place-name">
+    <input type="text" name="name" required id="place-name" value="{{name}}">
 
     <label for="place-category" class="required-label">Category (required):</label>
-    <select name="category" id="place-category" required>
-      <option value="" disabled selected>Select a category:</option>
+    <select name="category" id="place-category" required onchange="checkOther()">
+      {{#if category}}
+      <option value="{{category}}" hidden selected>{{category}}</option>
+      {{else}}
+      <option value="Select a category:" hidden selected>Select a category:</option>
+      {{/if}}
       <option value="Bar">Bar</option>
+      <option value="Bookstore">Bookstore</option>
       <option value="Cinema">Cinema</option>
       <option value="Gym">Gym</option>
       <option value="Hotel">Hotel</option>
@@ -18,25 +24,33 @@
       <option value="Other">Other</option>
     </select>
 
-    <label for="other-category">If other category, please specify:</label>
-    <input type="text" id="other-category" name="otherCategory">
+    <div class="other-category-fields" style="display: none;">
+      <label for="other-category">If other category, please specify:</label>
+      <input type="text" id="other-category" name="otherCategory" value="{{otherCategory}}">
+    </div>
 
     <label for="place-description">Description:</label>
-    <input type="text" name="description" id="place-description">
+    <input type="text" name="description" id="place-description" value="{{description}}">
 
     <label for="location" class="required-label">Location (required):</label>
     <div id="map" style="width:80%; height: 400px; margin:0 auto;"></div>
-    <input type="text" id="lat" name="lat" hidden required>
-    <input type="text" id="lng" name="lng" hidden required>
+    <input type="text" id="lat" name="lat" value="{{lat}}" hidden required>
+    <input type="text" id="lng" name="lng" value="{{lng}}" hidden required>
     <p class="error-message error-location" style="display: none; margin-top: 15px;">*You must provide
       the place with a location</p>
 
-  
     <label for="input-image-place">Upload an image for this place:</label>
-    <input type="file" name="image" id="input-image-place">
+    <div class="custom-file">
+      <label class="profile-image custom-file-label" for="input-image-place">
+        Add a picture from the place
+      </label>
+      <input type="file" name="image" class="custom-file-input" id="input-image-place" onchange="displayFileName()">
+    </div>
+    <p class="error-message">{{errorImage}}</p>
 
 
-    <button class="my-btn" type="submit">Create new place</button>
+    <button class="my-btn submitbtn" type="submit">Create new place</button>
+    <button class="my-btn login" type="button"><a href="/" style="display:block;">Cancel</a></button>
   </form>
 </div>
 

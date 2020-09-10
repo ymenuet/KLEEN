@@ -5,3 +5,15 @@ let map = new mapboxgl.Map({
     center: [-99.133209, 19.432608],
     zoom: 11
 });
+
+const $selectCategory = document.querySelector('#place-category')
+const $otherCategory = document.querySelector('.other-category-fields')
+
+function checkOther() {
+    if ($selectCategory.value === 'Other') $otherCategory.style.display = 'block'
+    else $otherCategory.style.display = 'none'
+}
+
+function displayFileName() {
+    document.querySelector(".custom-file-label").innerHTML = document.querySelector(".custom-file-input").value;
+}
