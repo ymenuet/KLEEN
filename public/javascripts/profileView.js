@@ -6,21 +6,23 @@ const myComments = document.querySelector(".my-comments")
 myPlacesViewBtn.addEventListener("click", () => {
     if (myPlaces.classList.contains("invisible")) {
         myPlaces.classList.remove("invisible")
-        myPlacesViewBtn.innerHTML = "Close my places view"
-        myCommentsViewBtn.classList.add("invisible")
+        myComments.classList.add("invisible")
+        myPlacesViewBtn.innerText = "Hide my places"
+        myCommentsViewBtn.innerText = "See my comments"
     } else {
         myPlaces.classList.add("invisible")
-        myCommentsViewBtn.classList.remove("invisible")
+        myPlacesViewBtn.innerText = "See my places"
     }
 })
 
 myCommentsViewBtn.addEventListener("click", () => {
     if (myComments.classList.contains("invisible")) {
         myComments.classList.remove("invisible")
-        myCommentsViewBtn.innerHTML = "Close my comments view"
-        myPlacesViewBtn.classList.add("invisible")
+        myPlaces.classList.add("invisible")
+        myCommentsViewBtn.innerText = "Hide my comments"
+        myPlacesViewBtn.innerText = "See my places"
     } else {
         myComments.classList.add("invisible")
-        myPlacesViewBtn.classList.remove("invisible")
+        myCommentsViewBtn.innerText = "See my comments"
     }
 })

@@ -97,6 +97,10 @@ a:hover {
     transform: scale(1.05);
 }
 
+.no-hover:hover {
+    transform: none;
+}
+
 .signup,
 .submitbtn,
 .signup:hover,
@@ -468,7 +472,7 @@ select {
 .avg-box {
     width: 70%;
     margin-bottom: 80px;
-    background-color: rgba(255, 255, 255, 0.84);
+    background-color: rgba(255, 255, 255, 0.87);
     padding: 10px;
     border-radius: 10px;
 }

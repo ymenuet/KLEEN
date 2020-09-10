@@ -8,12 +8,12 @@
     <h1 class="place-detail-title">{{place.name}}</h1>
     <br>
     <div class="avg-box">
-      <h5>Average Score: <span>{{place.averageScore}}</span> (total of {{place.contributions}} comments)</h5>
+      <h5>Average Score: <span>{{place.averageScore}} / 5</span> (total of {{place.contributions}} comments)</h5>
       <hr>
-      <h6>Facemask policy score: {{place.avgMasks}}</h6>
-      <h6>Gel and Soap score: {{place.avgGel}}</h6>
-      <h6>Cleanliness score: {{place.avgClean}}</h6>
-      <h6>Service score: {{place.avgService}}</h6>
+      <h6>Facemask policy score: {{place.avgMasks}}&nbsp;<i class="fas fa-star"></i></h6>
+      <h6>Gel and Soap score: {{place.avgGel}}&nbsp;<i class="fas fa-star"></i></h6>
+      <h6>Cleanliness score: {{place.avgClean}}&nbsp;<i class="fas fa-star"></i></h6>
+      <h6>Service score: {{place.avgService}}&nbsp;<i class="fas fa-star"></i></h6>
     </div>
     <div class="row w-100 detail-info">
       <div class="col-12 col-md-6 place-info">
@@ -24,11 +24,10 @@
         {{/unless}}
         <h5>{{place.description}}</h5>
         <br>
-        <p>This place scores a total average of {{place.averageScore}}/5 out of {{place.contributions}} comments. Their
-          facemask
-          policy rates {{place.avgMasks}}/5. The customer satisfaction rate about the gel and soap available is
-          {{place.avgGel}}/5. The general cleanliness of the place and their sanitizing policy rates
-          {{place.avgClean}}/5 and the service in general {{place.avgService}}/5.</p>
+        <p>This place scores a total average of {{place.averageScore}} / 5 out of {{place.contributions}} comments.<br>
+          Their facemask policy rates {{place.avgMasks}} / 5. The customer satisfaction rate about the gel and soap
+          available is {{place.avgGel}} / 5. The general cleanliness of the place and their sanitizing policy rates
+          {{place.avgClean}} / 5 and the service in general {{place.avgService}} / 5.</p>
       </div>
       <div class="col-12 col-md-6" id="map" style="height: 400px; margin:40px auto 0 auto; border-radius: 10px"></div>
     </div>
@@ -115,11 +114,11 @@
           <h5><img class="comment-profile-img" src="{{author.image}}" alt="image"> Commented by {{author.username}}</h5>
           <p>{{createdAt}}</p>
           <ul class="toleft">
-            <li>General average: {{avgScore}}<i class="fas fa-star"></i></li>
-            <li>Facemasks use: {{scoreMasks}}<i class="fas fa-star"></i></li>
-            <li>Antibacterial gel available: {{scoreGel}}<i class="fas fa-star"></i></li>
-            <li>Cleanliness of the place: {{scoreClean}}<i class="fas fa-star"></i></li>
-            <li>Quality of service in general: {{scoreService}}<i class="fas fa-star"></i></li>
+            <li><b>General average: {{avgScore}}</b>&nbsp;<i class="fas fa-star"></i></li>
+            <li>Facemasks use: {{scoreMasks}}&nbsp;<i class="fas fa-star"></i></li>
+            <li>Antibacterial gel available: {{scoreGel}}&nbsp;<i class="fas fa-star"></i></li>
+            <li>Cleanliness of the place: {{scoreClean}}&nbsp;<i class="fas fa-star"></i></li>
+            <li>Quality of service in general: {{scoreService}}&nbsp;<i class="fas fa-star"></i></li>
           </ul>
           {{#if image}}
           <img class="comment-img" src="{{image}}" alt="Image">
