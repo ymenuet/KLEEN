@@ -1,8 +1,9 @@
 # KLEEN
 Ironhack project #2
 <br>
-Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)
+Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)<br>
 Deployed website: https://kleen-app.herokuapp.com/
+<br>
 <br>
 Test user:
 - email: test-user@test.com
