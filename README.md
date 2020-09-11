@@ -9,17 +9,18 @@ Test user:
 <br>
 <br>
 Environment variables to add to .env file:
-
-PORT (example 3000)
-ENV (example development)
-URL (example http://localhost:3000)
-SECRET (whatever)
-DB (localhost or a Mongo Atlas)
-GOOGLE_ID
-GOOGLE_SECRET
-FACEBOOK_ID
-FACEBOOK_SECRET
-CLOUDINARY_NAME
-CLOUDINARY_KEY
-CLOUDINARY_SECRET
-MAPBOX_TOKEN
+<br>
+<br>
+PORT (example 3000)<br>
+ENV (example development)<br>
+URL (example http://localhost:3000)<br>
+SECRET (whatever)<br>
+DB (localhost or a Mongo Atlas)<br>
+GOOGLE_ID<br>
+GOOGLE_SECRET<br>
+FACEBOOK_ID<br>
+FACEBOOK_SECRET<br>
+CLOUDINARY_NAME<br>
+CLOUDINARY_KEY<br>
+CLOUDINARY_SECRET<br>
+MAPBOX_TOKEN<br>
