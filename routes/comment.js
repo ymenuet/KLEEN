@@ -17,12 +17,9 @@ const {
 
 router.post("/newComment/:placeId", ensureLogin, upload.single('image'), createCommentProcess);
 
-//for edit comment
 router.get("/editComment/:commentId", ensureLogin, checkAuthorComment, editCommentView)
-router.post("/editComment/:commentId", upload.single('image'),editCommentProcess)
+router.post("/editComment/:commentId", ensureLogin, checkAuthorComment, upload.single('image'), editCommentProcess)
 
-
-//for delete comment
 router.post("/:commentId", ensureLogin, checkAuthorComment, deleteComment);
 
 module.exports = router;

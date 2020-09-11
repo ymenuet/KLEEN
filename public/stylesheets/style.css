@@ -184,7 +184,8 @@ a:hover {
     width: 60%;
     position: absolute;
     left: 34%;
-    top: 60px; }
+    top: 60px;
+    margin-bottom: 100px; }
   .top-image {
     display: block;
     position: absolute;
