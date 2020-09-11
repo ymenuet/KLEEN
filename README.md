@@ -6,13 +6,12 @@ Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/
 Deployed website: https://kleen-app.herokuapp.com/
 <br>
 <br>
-Test user:
-- email: test-user@test.com
+Test user:<br>
+- email: test-user@test.com<br>
 - password: 123tester
 <br>
 <br>
-Environment variables to add to .env file:
-<br>
+#### Environment variables to add to .env file:
 <br>
 PORT (example 3000)<br>
 ENV (example development)<br>
