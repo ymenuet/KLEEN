@@ -2,18 +2,19 @@
 ## Ironhack project #2: Node.js web application
 <br>
 <br>
-Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)<br>
+
+##### Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)<br>
 Deployed website: https://kleen-app.herokuapp.com/
 <br>
 <br>
-Test user:<br>
+
+##### Test user:<br>
 - email: test-user@test.com<br>
 - password: 123tester
 <br>
 <br>
 
-### Environment variables to add to .env file:
-<br>
+##### Environment variables to add to .env file:
 PORT (example 3000)<br>
 ENV (example development)<br>
 URL (example http://localhost:3000)<br>
