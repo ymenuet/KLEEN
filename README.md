@@ -11,7 +11,7 @@ Test user:<br>
 - password: 123tester
 <br>
 <br>
-#### Environment variables to add to .env file:
+### Environment variables to add to .env file:
 <br>
 PORT (example 3000)<br>
 ENV (example development)<br>
