@@ -20,7 +20,10 @@ const storage = new CloudinaryStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === "image/png" || file.mimetype === 'image/jpg') cb(null, true)
+    if (file.mimetype === "image/png" ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg'
+    ) cb(null, true)
     else {
         req.fileFormatError = 'Allowed file formats are JPG and PNG. Please try again.'
         cb(null, false, new Error('Allowed file formats are JPG and PNG'))
