@@ -7,7 +7,7 @@ exports.createCommentProcess = async(req, res) => {
         scoreMasks,
         scoreGel,
         scoreClean,
-        scoreService
+        scoreService,
     } = req.body;
 
     if (scoreMasks === '' || scoreGel === '' || scoreClean === '' || scoreService === '') return res.redirect(`/places/${req.params.placeId}?errorComment=` + 'Comment not published: you have to rate all the categories')

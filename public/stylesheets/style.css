@@ -172,9 +172,24 @@ a:hover {
   top: 35px;
   padding-left: 15px; }
 
+.top-image {
+  display: none; }
+
 @media (min-width: 768px) {
+  .main-home {
+    width: 60%;
+    position: absolute;
+    left: 40%;
+    top: 60px; }
   .main-text h3 {
-    width: 60%; } }
+    width: 60%; }
+  .top-image {
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 250px;
+    right: 60%; } }
 
 /* SIGN  UP & LOGIN FORMS */
 .main-text input,
