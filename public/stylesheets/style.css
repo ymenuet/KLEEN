@@ -341,6 +341,16 @@ select {
   bottom: 10px;
   margin: 20px calc(15% - 1.25rem); }
 
+.pagination {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between; }
+
+.pagination .login {
+  margin: 0;
+  box-shadow: 6px 6px 16px 0px rgba(0, 0, 0, 0.75); }
+
 /* PLACE DETAIL */
 .place-detail-title {
   color: white !important;

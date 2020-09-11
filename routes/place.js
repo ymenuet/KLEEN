@@ -23,9 +23,9 @@ router.get('/new', ensureLogin, newPlaceView);
 router.post('/new', ensureLogin, upload.single('image'), catchErrors(newPlaceProcess))
 
 // View places
-router.get('/', ensureLogin, catchErrors(getPlaces))
-router.get('/quick-search', ensureLogin, catchErrors(searchPlaces))
-router.get('/search', ensureLogin, catchErrors(advancedSearchPlaces))
+router.get('/page/:pageNumber', ensureLogin, catchErrors(getPlaces))
+router.get('/quick-search/page/:pageNumber', ensureLogin, catchErrors(searchPlaces))
+router.get('/search/page/:pageNumber', ensureLogin, catchErrors(advancedSearchPlaces))
 router.get('/:placeId', ensureLogin, catchErrors(viewPlace))
 
 // Edit places

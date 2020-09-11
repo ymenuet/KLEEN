@@ -5,6 +5,7 @@
   <br>
   <a href="/places/new" class="my-btn login">Add a new place here</a>
   {{else}}
+  
   <div class="row">
     {{#each places}}
     <div class="card col-12 col-md-6 col-lg-4">
@@ -62,4 +63,32 @@
     {{/each}}
   </div>
   {{/unless}}
+  <div class="pagination">
+    <div class="previous-page">
+      {{#unless pagination.firstPage}}
+      {{#if pagination.query}}
+      {{#if pagination.quick}}
+      <a class="login my-btn" href="/places/quick-search/page/{{pagination.previousPage}}{{pagination.query}}">Previous page</a>
+      {{else}}
+      <a class="login my-btn" href="/places/search/page/{{pagination.previousPage}}{{pagination.query}}">Previous page</a>
+      {{/if}}
+      {{else}}
+      <a class="login my-btn" href="/places/page/{{pagination.previousPage}}">Previous page</a>
+      {{/if}}
+      {{/unless}}
+    </div>
+    <div class="next-page">
+      {{#unless pagination.lastPage}}
+      {{#if pagination.query}}
+      {{#if pagination.quick}}
+      <a class="login my-btn" href="/places/quick-search/page/{{pagination.nextPage}}{{pagination.query}}">Next page</a>
+      {{else}}
+      <a class="login my-btn" href="/places/search/page/{{pagination.nextPage}}{{pagination.query}}">Next page</a>
+      {{/if}}
+      {{else}}
+      <a class="login my-btn" href="/places/page/{{pagination.nextPage}}">Next page</a>
+      {{/if}}
+      {{/unless}}
+    </div>
+  </div>
 </div>

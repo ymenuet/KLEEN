@@ -3,7 +3,7 @@
   <h3>We help you getting out of your home without worrying for your health!</h3>
 
   {{#if user}}
-  <form action="/places/quick-search" method="GET" class="homepage-form">
+  <form action="/places/quick-search/page/1" method="GET" class="homepage-form">
     <i class="fas fa-search"></i>
     <input type="text" name="name" placeholder='Type the name of a place' class="my-btn no-hover">
     <br>
@@ -23,7 +23,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="/places/search" method="GET">
+        <form action="/places/search/page/1" method="GET">
           <div class="modal-body">
             <label>Apply filters on your search to only see the places that meet your requirements!</label>
             <label for="search-location">Location:</label>

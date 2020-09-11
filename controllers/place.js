@@ -2,6 +2,7 @@ const Place = require('../models/Place')
 const {
     default: Axios
 } = require('axios')
+const placesPerPage = 12
 
 exports.newPlaceView = (req, res) => {
     res.render('place/newPlace')
@@ -58,9 +59,28 @@ exports.newPlaceProcess = async(req, res) => {
 }
 
 exports.getPlaces = async(req, res) => {
+    let {
+        pageNumber
+    } = req.params
+    pageNumber = parseInt(pageNumber)
+
+    if (pageNumber < 1) return res.redirect('/')
+
     const places = await Place.find()
+        .skip((pageNumber - 1) * placesPerPage)
+        .limit(placesPerPage)
+
+    if (places.length === 0) return res.redirect(`/places/page/${pageNumber - 1}`)
+
+    const pagination = {}
+    pagination.previousPage = pageNumber == 1 ? 1 : pageNumber - 1
+    pagination.nextPage = places.length == placesPerPage ? pageNumber + 1 : pageNumber
+    pagination.firstPage = pageNumber == 1
+    pagination.lastPage = places.length != placesPerPage
+
     res.render('place/places', {
-        places
+        places,
+        pagination
     })
 }
 
@@ -69,45 +89,67 @@ exports.searchPlaces = async(req, res) => {
         name
     } = req.query;
 
-    if (!name) return res.redirect('/places')
+    let {
+        pageNumber
+    } = req.params
+    pageNumber = parseInt(pageNumber)
+
+    if (pageNumber < 1) return res.redirect('/')
+
+    if (!name) return res.redirect('/places/page/1')
 
     const regex = name.split(' ').join('|');
 
     const places = await Place.find({
-        $or: [{
-                name: {
-                    $regex: regex,
-                    $options: 'i'
+            $or: [{
+                    name: {
+                        $regex: regex,
+                        $options: 'i'
+                    }
+                },
+                {
+                    category: {
+                        $regex: regex,
+                        $options: 'i'
+                    }
+                },
+                {
+                    otherCategory: {
+                        $regex: regex,
+                        $options: 'i'
+                    }
+                },
+                {
+                    address: {
+                        $regex: regex,
+                        $options: 'i'
+                    }
                 }
-            },
-            {
-                category: {
-                    $regex: regex,
-                    $options: 'i'
-                }
-            },
-            {
-                otherCategory: {
-                    $regex: regex,
-                    $options: 'i'
-                }
-            },
-            {
-                address: {
-                    $regex: regex,
-                    $options: 'i'
-                }
-            }
-        ]
-    })
+            ]
+        })
+        .skip((pageNumber - 1) * placesPerPage)
+        .limit(placesPerPage)
+
+    const pagination = {}
+    pagination.query = `?name=${name}`
+
+    if (places.length === 0) return res.redirect(`/places/quick-search/page/${pageNumber - 1}${pagination.query}`)
+
+    pagination.previousPage = pageNumber == 1 ? 1 : pageNumber - 1
+    pagination.nextPage = places.length == placesPerPage ? pageNumber + 1 : pageNumber
+    pagination.firstPage = pageNumber == 1
+    pagination.lastPage = places.length != placesPerPage
+    pagination.quick = true
+
 
     res.render('place/places', {
-        places
+        places,
+        pagination
     })
 }
 
 exports.advancedSearchPlaces = async(req, res) => {
-    const {
+    let {
         address,
         category,
         averageScore,
@@ -117,37 +159,63 @@ exports.advancedSearchPlaces = async(req, res) => {
         avgService
     } = req.query;
 
+    let {
+        pageNumber
+    } = req.params
+    pageNumber = parseInt(pageNumber)
+
+    if (pageNumber < 1) return res.redirect('/')
+
     const categoryRegex = category ? category : '[\s\S]*';
     const addressRegex = address ? address.split(' ').join('|') : '[\s\S]*';
 
+    if (averageScore > 5 || averageScore < 0 || !averageScore) averageScore = 0
+    if (avgMasks > 5 || avgMasks < 0 || !avgMasks) avgMasks = 0
+    if (avgGel > 5 || avgGel < 0 || !avgGel) avgGel = 0
+    if (avgClean > 5 || avgClean < 0 || !avgClean) avgClean = 0
+    if (avgService > 5 || avgService < 0 || !avgService) avgService = 0
+
     const places = await Place.find({
-        category: {
-            $regex: categoryRegex,
-            $options: 'i'
-        },
-        address: {
-            $regex: addressRegex,
-            $options: 'i'
-        },
-        averageScore: {
-            $gte: averageScore
-        },
-        avgMasks: {
-            $gte: avgMasks
-        },
-        avgGel: {
-            $gte: avgGel
-        },
-        avgClean: {
-            $gte: avgClean
-        },
-        avgService: {
-            $gte: avgService
-        }
-    })
+            category: {
+                $regex: categoryRegex,
+                $options: 'i'
+            },
+            address: {
+                $regex: addressRegex,
+                $options: 'i'
+            },
+            averageScore: {
+                $gte: averageScore
+            },
+            avgMasks: {
+                $gte: avgMasks
+            },
+            avgGel: {
+                $gte: avgGel
+            },
+            avgClean: {
+                $gte: avgClean
+            },
+            avgService: {
+                $gte: avgService
+            }
+        })
+        .skip((pageNumber - 1) * placesPerPage)
+        .limit(placesPerPage)
+
+    const pagination = {}
+    pagination.query = `?address=${address?address:''}&category=${category?category:''}&averageScore=${averageScore}&avgMasks=${avgMasks}&avgGel=${avgGel}&avgClean=${avgClean}&avgService=${avgService}`
+
+    if (places.length === 0 && pageNumber != 1) return res.redirect(`/places/search/page/${pageNumber - 1}${pagination.query}`)
+
+    pagination.previousPage = pageNumber == 1 ? 1 : pageNumber - 1
+    pagination.nextPage = places.length == placesPerPage ? pageNumber + 1 : pageNumber
+    pagination.firstPage = pageNumber == 1
+    pagination.lastPage = places.length != placesPerPage
 
     res.render('place/places', {
-        places
+        places,
+        pagination
     })
 }
 
