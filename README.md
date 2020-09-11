@@ -1,5 +1,6 @@
 # KLEEN
-Ironhack project #2
+## Ironhack project #2: Node.js web application
+<br>
 <br>
 Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)<br>
 Deployed website: https://kleen-app.herokuapp.com/
