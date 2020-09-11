@@ -143,12 +143,20 @@
       center: [{{ place.location.coordinates }}]
     })
     map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: false,
+      })
+    );
+    map.addControl(
       new MapboxDirections({
         accessToken: mapboxgl.accessToken,
       }),
       'top-left'
     );
+    const $destInput = document.querySelector('#mapbox-directions-destination-input input')
+    $destInput.value = '{{place.address}}'
   }
   </script>
-
-  
