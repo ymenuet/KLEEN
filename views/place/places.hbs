@@ -1,4 +1,4 @@
-<div class="main-text">
+<div class="main-text places-page">
   {{#unless places}}
   <h1>You tried and couldn't find the place you are looking for?</h1>
   <br>
@@ -10,19 +10,19 @@
     <div class="card col-12 col-md-6 col-lg-4">
       <div class="card-image">
         <a href="/places/{{_id}}">
-        <img src="{{image}}" alt="{{name}}" class="card-img-top">
+          <img src="{{image}}" alt="{{name}}" class="card-img-top">
         </a>
       </div>
       <div class="card-body">
         <div>
-        <h5 class="card-title">{{name}}</h5>
-        <p id="star-row-{{_id}}"></p>
-        {{#unless otherCategory}}
-        <h6 class="card-title">{{category}}</h6>
-        {{else}}
-        <h6 class="card-title">{{otherCategory}}</h6>
-        {{/unless}}
-        <p class="card-text">{{description}}</p>
+          <h5 class="card-title">{{name}}</h5>
+          <p id="star-row-{{_id}}"></p>
+          {{#unless otherCategory}}
+          <h6 class="card-title">{{category}}</h6>
+          {{else}}
+          <h6 class="card-title">{{otherCategory}}</h6>
+          {{/unless}}
+          <p class="card-text">{{description}}</p>
         </div>
         <a href="/places/{{_id}}" class="my-btn submitbtn detail">See details</a>
       </div>

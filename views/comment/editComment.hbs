@@ -1,7 +1,9 @@
 <div class="main-text">
   <h2>Edit your comment</h2>
   <form action="/comment/editComment/{{_id}}" method="POST" id="form-container" enctype="multipart/form-data">
-
+    {{#if errorComment}}
+    <p class="error-message">{{errorComment}}</p>
+    {{/if}}
     <label for="content-comment">Description:</label>
     <input type="text" name="content" id="content-comment" maxlength="500" value="{{content}}">
     <br>

@@ -17,7 +17,7 @@ exports.newPlaceProcess = async(req, res) => {
         lat
     } = req.body
 
-    if (name === '' || category === 'Select a category:' || lng === '' || lat === '') return res.render('place/newPlace', {
+    if (name === '' || category === 'Select a category:' || lng === '' || lat === '' || !req.file) return res.render('place/newPlace', {
         name,
         category,
         otherCategory,
@@ -25,11 +25,10 @@ exports.newPlaceProcess = async(req, res) => {
         lng,
         lat,
         error: "*Please fill in all the required fields",
-        errorImage: "Due to the missing fields error, you have to upload your image again if you want to add one"
+        errorImage: "Due to the missing fields error, you have to upload your image again"
     })
 
-    let image;
-    if (req.file) image = req.file.path;
+    let image = req.file.path;
 
     const {
         data: {

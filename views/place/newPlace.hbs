@@ -39,12 +39,13 @@
     <p class="error-message error-location" style="display: none; margin-top: 15px;">*You must provide
       the place with a location</p>
 
-    <label for="input-image-place">Upload an image for this place:</label>
+    <label for="input-image-place" class="required-label">Upload an image for this place (required):</label>
     <div class="custom-file">
       <label class="profile-image custom-file-label" for="input-image-place">
         Add a picture from the place
       </label>
-      <input type="file" name="image" class="custom-file-input" id="input-image-place" onchange="displayFileName()">
+      <input type="file" name="image" class="custom-file-input" id="input-image-place" onchange="displayFileName()"
+        required>
     </div>
     <p class="error-message">{{errorImage}}</p>
 
