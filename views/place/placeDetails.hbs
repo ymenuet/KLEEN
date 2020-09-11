@@ -7,7 +7,7 @@
 <div class="container">
   <div class="main-text place-detail">
     {{#if errorComment}}
-    <p class="error-message">{{errorComment}}</p>
+    <p class="error-message-details">{{errorComment}}</p>
     {{/if}}
     <h1 class="place-detail-title">{{place.name}}</h1>
     <br>
@@ -103,7 +103,7 @@
           <label for="image">Upload an image if you want:</label>
           <div class="custom-file">
             <label class="profile-image custom-file-label " for="image">
-              Add a picture from the place
+              Add a picture from the place (JPG or PNG)
             </label>
             <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
           </div>

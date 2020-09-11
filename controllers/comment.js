@@ -12,6 +12,8 @@ exports.createCommentProcess = async(req, res) => {
 
     if (scoreMasks === '' || scoreGel === '' || scoreClean === '' || scoreService === '') return res.redirect(`/places/${req.params.placeId}?errorComment=` + 'Comment not published: you have to rate all the categories')
 
+    if (req.fileFormatError) return res.redirect(`/places/${req.params.placeId}?errorComment=` + 'Comment not published: ' + `${req.fileFormatError}`)
+
     let image;
     if (req.file) image = req.file.path;
 
@@ -86,6 +88,11 @@ exports.editCommentProcess = async(req, res) => {
     comment.errorComment = 'Comment not edited: you have to rate all the categories'
 
     if (scoreMasks === '' || scoreGel === '' || scoreClean === '' || scoreService === '') return res.render('comment/editComment', comment)
+
+    if (req.fileFormatError) {
+        comment.errorComment = req.fileFormatError
+        return res.render('comment/editComment', comment)
+    }
 
     const place = await Place.findById(comment.place)
 

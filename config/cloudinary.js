@@ -16,9 +16,18 @@ const storage = new CloudinaryStorage({
         folder: "KLEEN",
         allowed_formats: ['jpg', 'png'],
         public_id: `kleen-${file.originalname}`
-    })
+    }),
 })
 
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === "image/png" || file.mimetype === 'image/jpg') cb(null, true)
+    else {
+        req.fileFormatError = 'Allowed file formats are JPG and PNG. Please try again.'
+        cb(null, false, new Error('Allowed file formats are JPG and PNG'))
+    }
+}
+
 module.exports = multer({
-    storage
+    storage,
+    fileFilter
 })

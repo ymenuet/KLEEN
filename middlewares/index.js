@@ -25,4 +25,3 @@ exports.checkAuthorComment = async(req, res, next) => {
     if (`${comment.author}` === `${req.user._id}`) return next()
     else res.redirect('/')
 }
-

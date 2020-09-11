@@ -32,9 +32,9 @@
     <label for="image">Upload an image if you want:</label>
     <div class="custom-file">
       <label class="profile-image custom-file-label " for="image">
-        Image of the place
+        Image of the place (JPG or PNG)
       </label>
-      <input type="file" name="image" class="custom-file-input">
+      <input type="file" name="image" class="custom-file-input" onchange="displayFileName()">
     </div>
 
     <button type="submit" class="submitbtn my-btn">Edit comment</button>

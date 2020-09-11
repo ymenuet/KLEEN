@@ -18,6 +18,16 @@ exports.newPlaceProcess = async(req, res) => {
         lat
     } = req.body
 
+    if (req.fileFormatError) return res.render('place/newPlace', {
+        name,
+        category,
+        otherCategory,
+        description,
+        lng,
+        lat,
+        error: req.fileFormatError
+    })
+
     if (name === '' || category === 'Select a category:' || lng === '' || lat === '' || !req.file) return res.render('place/newPlace', {
         name,
         category,
@@ -28,6 +38,7 @@ exports.newPlaceProcess = async(req, res) => {
         error: "*Please fill in all the required fields",
         errorImage: "Due to the missing fields error, you have to upload your image again"
     })
+
 
     let image = req.file.path;
 
@@ -269,6 +280,11 @@ exports.editPlaceProcess = async(req, res) => {
         place,
         error: "*Please fill in all the required fields",
         errorImage: "*Due to the missing fields error, you have to upload your image again if you want to update the current one"
+    })
+
+    if (req.fileFormatError) return res.render('place/editPlace', {
+        place,
+        error: req.fileFormatError
     })
 
     let image = place.image;

@@ -33,7 +33,11 @@ exports.signupProcess = async(req, res) => {
         message: "Indicate username, email and password"
     });
 
-    let image;
+    if (req.fileFormatError) return res.render('auth/signup', {
+        message: req.fileFormatError
+    })
+
+    let image = 'https://res.cloudinary.com/dlyw9xi3k/image/upload/v1599665580/KLEEN/default-profile_p6n81c.png';
     if (req.file) image = req.file.path
 
     const user = await User.findOne({
