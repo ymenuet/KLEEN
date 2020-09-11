@@ -116,7 +116,7 @@
         {{#each place.comments}}
         <div class="comments">
           <h5><img class="comment-profile-img" src="{{author.image}}" alt="image"> Commented by {{author.username}}</h5>
-          <p>{{createdAt}}</p>
+          <p>{{modifyDate createdAt "MM-DD-YYYY"}}</p>
           <ul class="toleft">
             <li><b>General average: {{avgScore}}</b>&nbsp;<i class="fas fa-star"></i></li>
             <li>Facemasks use: {{scoreMasks}}&nbsp;<i class="fas fa-star"></i></li>
@@ -134,7 +134,6 @@
     </div>
   </div>
 
-
   <script>
     window.onload = () => {
       let marker = new mapboxgl.Marker()
@@ -151,3 +150,5 @@
     );
   }
   </script>
+
+  
