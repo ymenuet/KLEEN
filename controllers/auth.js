@@ -34,11 +34,7 @@ exports.signupProcess = async(req, res) => {
     });
 
     let image;
-    if (req.file) {
-        image = req.file.path
-    } else {
-        image = "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
-    }
+    if (req.file) image = req.file.path
 
     const user = await User.findOne({
         email
