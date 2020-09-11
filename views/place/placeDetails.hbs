@@ -1,4 +1,8 @@
 </div>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet"
+  href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+  type="text/css" />
 <div><img class="image-detail img-fluid" src="{{place.image}}" alt="{{place.name}}"></div>
 <div class="container">
   <div class="main-text place-detail">
@@ -139,5 +143,11 @@
     map.flyTo({
       center: [{{ place.location.coordinates }}]
     })
+    map.addControl(
+      new MapboxDirections({
+        accessToken: mapboxgl.accessToken,
+      }),
+      'top-left'
+    );
   }
   </script>
