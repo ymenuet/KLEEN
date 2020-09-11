@@ -37,7 +37,7 @@ exports.newPlaceProcess = async(req, res) => {
                 myPlace
             ]
         }
-    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${process.env.MAPBOX_TOKEN}`)
+    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=pk.eyJ1IjoieW1lbnVldCIsImEiOiJja2V1OGw5emowMXhzMnpudzJzMW9rM2pjIn0.ClSDpO_UqVo2gsMkUjma2w`)
 
     const address = myPlace.place_name
 
@@ -282,7 +282,7 @@ exports.editPlaceProcess = async(req, res) => {
                 myPlace
             ]
         }
-    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${process.env.MAPBOX_TOKEN}`)
+    } = await Axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=pk.eyJ1IjoieW1lbnVldCIsImEiOiJja2V1OGw5emowMXhzMnpudzJzMW9rM2pjIn0.ClSDpO_UqVo2gsMkUjma2w`)
 
     const address = myPlace.place_name
 
