@@ -2,7 +2,7 @@
 ## Ironhack project #2: Node.js full-stack web application
 
 #### Developed by: Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)<br>
-Deployed website: https://kleen-app.herokuapp.com/
+#### Deployed website: https://kleen-app.herokuapp.com/
 
 #### What is KLEEN?
 Kleen helps people to get out of their home without worrying for their health.<br>
