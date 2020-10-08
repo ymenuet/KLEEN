@@ -7,7 +7,7 @@
 Kleen helps people to get out of their home without worrying for their health.<br>
 It is a collaborative web application where users can add new public places and/or comment and rate their respect of the sanitary measures. The idea is that when one wants to go out, they can check for the places around them with the best rate and feel more comfortable because they know the place where they are going is taking the global pandemic situation seriously.<br>
 
-#### Developed by: Mai Yamawaki (https://github.com/maiyamawaki) & Yvan Menuet (https://github.com/ymenuet)
+#### Developed by: [Mai Yamawaki](https://github.com/maiyamawaki) & [Yvan Menuet](https://github.com/ymenuet)
 
 #### Test user:<br>
 - email: test-user@test.com<br>
